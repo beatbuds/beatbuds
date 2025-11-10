@@ -7,16 +7,18 @@ import { Link } from "react-router-dom";
 // import Nav from "../components/Nav";
 import "../styling/LoginPage.css";
 import "../index.css"
+import Top from "../components/top.jsx";
 
 function LoginPage() {
     return(
+        <>
+        <Top />
         <div className="flex login-page">
             {/* Banner */}
             <div className="login-banner">
                 <div className="flex">
                     <img src="https://images.unsplash.com/photo-1688658054075-9785303491bc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687" alt="" />
                 </div>
-                <h1>beatbuds</h1>
                 <p className="">Explore music community everywhere!</p>
             </div>
 
@@ -34,6 +36,7 @@ function LoginPage() {
                 <button type="submit">Log In</button>
             </form>
         </div>
+        </>
     );    
 }
 

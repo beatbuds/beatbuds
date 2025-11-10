@@ -1,17 +1,23 @@
 import {useState,useEffect} from "react";
 // import {supabase } from "../client"
-import "../index.css"
 import logo from '../assets/beatbudsLOGOV5.png'
+import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import '../styling/welcome.css'
 
 function Top() {
+    const location = useLocation();
+    const currPath = location.pathname;
     return (
         <>
             <div class="nav">
                 <img src={logo} alt="bb-logo"></img>
                 <h1>beatbuds</h1>
-                <h2 a='#' >Login/SignUp</h2>
+                {currPath==='/' && (
+                    <h2><Link to="/LoginPage" className="login-link">Login/SignUp</Link></h2>
+                )}
             </div>
-            
+            <div class="spacer"></div>
         </>
     )
 }

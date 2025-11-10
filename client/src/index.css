@@ -11,7 +11,8 @@
   padding: 0;
   box-sizing: border-box;
   /* outline: 1px solid grey; */
-}
+
+
 
 body{
   /* Cormorant font has variable weight, but Jacques only has a single, static font weight.
