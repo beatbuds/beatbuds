@@ -11,7 +11,7 @@ function Top() {
     return (
         <>
             <div class="nav">
-                <img src={logo} alt="bb-logo"></img>
+                <Link to="/"><img src={logo} alt="bb-logo"></img></Link>
                 <h1>beatbuds</h1>
                 {currPath==='/' && (
                     <h2><Link to="/LoginPage" className="login-link">Login/SignUp</Link></h2>
