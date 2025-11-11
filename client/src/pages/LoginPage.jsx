@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 // import Nav from "../components/Nav";
 import "../styling/LoginPage.css";
 import "../index.css"
-import Top from "../components/top.jsx";
+import Nav from "../components/Nav.jsx";
 
 function LoginPage() {
     return(
         <>
-        <Top />
+        <Nav />
         <div className="flex login-page">
             {/* Banner */}
             <div className="login-banner">

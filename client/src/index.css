@@ -6,12 +6,12 @@
   --bg-primary: #87d78b;
 }
 
+
 /* *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   /* outline: 1px solid grey; */
-
 
 
 body{
@@ -22,6 +22,8 @@ body{
   background-color: var(--bg-dark);
   color: var(--text-light);
   background: linear-gradient(90deg, #1e1e1e 10%, #212121 90%, #282828 100%);
+  display: grid;
+  grid-template-columns: auto 1fr;
 }
 
 
