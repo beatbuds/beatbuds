@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 // import Nav from "../components/Nav";
 import "../styling/LoginPage.css";
 import "../index.css"
-import Top from "../components/top.jsx";
+import Top from "../components/Top.jsx";
 
 function LoginPage() {
     return(

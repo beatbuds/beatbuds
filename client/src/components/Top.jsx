@@ -14,7 +14,10 @@ function Top() {
                 <Link to="/"><img src={logo} alt="bb-logo"></img></Link>
                 <h1>beatbuds</h1>
                 {currPath==='/' && (
+                    <div className="flex">
                     <h2><Link to="/LoginPage" className="login-link">Login/SignUp</Link></h2>
+                    <Link to="/profile" className="">Profile</Link>
+                    </div>
                 )}
             </div>
             <div class="spacer"></div>

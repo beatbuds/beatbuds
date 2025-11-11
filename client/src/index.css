@@ -6,11 +6,12 @@
   --bg-primary: #87d78b;
 }
 
-/* *{
-  margin: 0;
+*{
+  /* margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  /* outline: 1px solid grey; */
+  box-sizing: border-box; */
+  /* outline: 0.2px solid rgb(82, 82, 82); */
+}
 
 
 

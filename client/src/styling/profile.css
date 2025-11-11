@@ -1,0 +1,109 @@
+.profile-page{
+    margin: 0 auto;
+    margin-top: 3rem;
+    max-width: 1200px;
+    background-color: rgb(27, 27, 27);
+    outline: 1px solid var(--bg-primary);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.profile-top{
+    gap: 2rem;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.profile-nav{
+    flex: 1;
+    font-size: 1.1rem;
+    max-width: 200px;
+}
+
+.profile-nav p{
+    padding: 10px;
+}
+
+.profile-desc{
+    flex: 1;
+}
+
+.profile-desc-top{
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.profile-desc > h2{
+    font-size: 1.8rem;
+}
+
+.profile-tags{
+    gap: 0.5rem;
+}
+
+.profile-tags span{
+    display: block;
+    max-width: 70px;
+    text-align: center;
+    background-color: var(--bg-primary);
+    padding: 0.2rem;
+    padding-inline: 0.8rem;
+    border-radius: 0.2rem;
+}
+
+.pfp-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    height: 220px;
+    width: 220px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+
+.profile-posts{
+    overflow-x: auto;
+    flex: 3;
+    /* justify-content: space-evenly; */
+    background-color: green;
+}
+
+.profile-posts > img{
+    flex: 1;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+
+/* Mobile styles */
+@media (max-width: 600px) {
+
+    .profile-top{
+        justify-content: center;
+        text-align: center;
+    }
+
+    .profile-desc-top{
+        justify-content: center;
+    }
+
+    .profile-tags{
+        justify-content: center;
+    }
+    .profile-bottom{
+        display: block;
+    }
+
+    .profile-nav{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        max-width: 100%;
+    }
+}
+
+
+
+
