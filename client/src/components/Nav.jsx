@@ -8,6 +8,7 @@ import '../styling/nav.css'
 function Nav() {
     const location = useLocation();
     const currPath = location.pathname;
+
     return (
         <>
             <div class="nav">

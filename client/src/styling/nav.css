@@ -48,10 +48,3 @@ align-items: center;
 height: 50px;
 width: auto;
 }
-.nav ul li .icon {
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  text-align: center;
-  margin-left:0;
-}
