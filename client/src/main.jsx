@@ -6,6 +6,11 @@ import { BrowserRouter, Routes, Route, Link, createBrowserRouter, RouterProvider
 import RootLayout from './RootLayout.jsx'
 import App from './App.jsx'
 import LoginPage from './pages/LoginPage.jsx'
+import Profile from './pages/Profile.jsx'
+import Settings from './pages/Settings.jsx'
+import Communities from './pages/Communities.jsx'
+import MusicPlayer from './pages/MusicPlayer.jsx'
+import Fyp from './pages/Fyp.jsx'
 
 const router = createBrowserRouter([
   {
@@ -13,7 +18,11 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <App /> },
       { path: "/LoginPage", element: <LoginPage /> },
-      {path:"/Profile", element: <Element />},
+      { path: "/MusicPlayer", element: <MusicPlayer /> },
+      {path:"/Profile", element: <Profile />},
+      {path:"/Settings", element: <Settings />},
+      {path:"/Communities", element: <Communities />},
+      {path:"/Fyp", element: <Fyp />},
     ],
   },
 ]);
