@@ -12,7 +12,6 @@ import Nav from "../components/Nav.jsx";
 function LoginPage() {
     return(
         <>
-        <Nav />
         <div className="flex login-page">
             {/* Banner */}
             <div className="login-banner">
