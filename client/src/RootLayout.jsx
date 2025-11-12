@@ -7,7 +7,7 @@ function RootLayout() {
   return (
     <>
     <div class="page-layout">
-      <div class="nav">
+      <div class="nav-layout">
         <Nav />
       </div>
       <div class="main-content">

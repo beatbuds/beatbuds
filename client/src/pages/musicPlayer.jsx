@@ -4,7 +4,6 @@ import Nav from "../components/Nav.jsx"
 function MusicPlayer() {
     return(
     <>
-        <Nav />
     </>
     )
 }
