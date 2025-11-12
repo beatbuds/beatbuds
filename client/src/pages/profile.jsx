@@ -1,11 +1,9 @@
-import Top from "../components/Top";
 import "../styling/profile.css"
 
 
 function Profile(){
     return(
         <>
-            <Top />
             <div className="profile-page">
                 {/* Top div holds pfp, name, followers, etc. */}
                 <div className="profile-top flex">
@@ -34,10 +32,10 @@ function Profile(){
                 {/* Bottom div holds profile nav (posts, respots, likes, etc.) */}
                 <div className="profile-bottom flex">
                     <div className="profile-nav">
-                        <p>Posts: 0</p>
-                        <p>Reposts: 0</p>
-                        <p>Likes: 0</p>
-                        <p>Followers: 0</p>
+                        <p>posts: 0</p>
+                        <p>reposts: 0</p>
+                        <p>likes: 0</p>
+                        <p>followers: 0</p>
                     </div>
 
                     <div className="profile-posts flex">
