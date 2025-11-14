@@ -39,16 +39,16 @@
     width: 100%;
 }
 
-.login-form{
+.login-widget{
     flex-grow: 4;
 }
 
-.login-form label{
+.login-widget label{
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }
 
-.login-form input{
+.login-widget input{
     padding: 1rem;
     width: 100%;
     border-radius: 0.2rem;

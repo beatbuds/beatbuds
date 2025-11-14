@@ -20,28 +20,43 @@ export default function Auth() {
   }
 
   return (
-    <div className="row flex flex-center">
-      <div className="col-6 form-widget">
-        <h1 className="header">Supabase + React</h1>
-        <p className="description">Sign in via magic link with your email below</p>
-        <form className="form-widget" onSubmit={handleLogin}>
-          <div>
-            <input
-              className="inputField"
-              type="email"
-              placeholder="Your email"
-              value={email}
-              required={true}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <button className={'button block'} disabled={loading}>
-              {loading ? <span>Loading</span> : <span>Send magic link</span>}
-            </button>
-          </div>
-        </form>
+    <div className="flex login-page">
+      {/* Banner */}
+      <div className="login-banner">
+        <div className="flex">
+          <img
+            src="https://images.unsplash.com/photo-1688658054075-9785303491bc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687"
+            alt="Music community banner"
+          />
+        </div>
+        <p className="">Explore music community everywhere!</p>
       </div>
+
+      {/* Login Form */}
+      <form className="login-widget" onSubmit={handleLogin}>
+        <div className="flex login-welcome">
+          <p>Welcome Back!</p>
+        </div>
+        
+        <label htmlFor="email">E-Mail</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="jane@gmail.com"
+          className="dark-bg" // Your desired class
+          value={email} // Functional part: links to state
+          required={true} // Functional part: for validation
+          onChange={(e) => setEmail(e.target.value)} // Functional part: updates state
+        />
+
+        {/* Functional part: Added the submit button */}
+        <div>
+          <button className={'button block'} disabled={loading}>
+            {loading ? <span>Loading...</span> : <span>Send login link</span>}
+          </button>
+        </div>
+      </form>
     </div>
   )
 }
