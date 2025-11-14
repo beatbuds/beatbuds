@@ -14,7 +14,7 @@ export default function Auth() {
     if (error) {
       alert(error.error_description || error.message)
     } else {
-      alert('Check your email for the login link!')
+      alert('check your email for the login link!')
     }
     setLoading(false)
   }
@@ -22,14 +22,14 @@ export default function Auth() {
   return (
     <div className="row flex flex-center">
       <div className="col-6 form-widget">
-        <h1 className="header">Supabase + React</h1>
-        <p className="description">Sign in via magic link with your email below</p>
+        <h1 className="header">login</h1>
+        <p className="description">sign in with your email</p>
         <form className="form-widget" onSubmit={handleLogin}>
           <div>
             <input
               className="inputField"
               type="email"
-              placeholder="Your email"
+              placeholder="your email"
               value={email}
               required={true}
               onChange={(e) => setEmail(e.target.value)}
@@ -37,7 +37,7 @@ export default function Auth() {
           </div>
           <div>
             <button className={'button block'} disabled={loading}>
-              {loading ? <span>Loading</span> : <span>Send magic link</span>}
+              {loading ? <span>loading</span> : <span>send login link</span>}
             </button>
           </div>
         </form>
