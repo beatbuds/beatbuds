@@ -1,7 +1,21 @@
-h1 {
-    display: flex;
-    text-align: center;
+body {
+    margin: 0;
+}
+ .top-container {
+    display: flex;  
+    flex-direction: row;
     align-items: center;
-    top:0;
-    justify-content: center;
+    text-align: center;
+    z-index: 10;
+    margin-left: 50px;
+}
+
+
+.top-container h1 {
+    font-size: 80px;
+    font-weight: 900;
+    
+}
+.top-container h2 {
+    font-size: 35px;
 }

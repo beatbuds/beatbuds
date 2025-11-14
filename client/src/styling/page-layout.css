@@ -7,6 +7,5 @@
     grid-column: 1;
 }
 .main-content {
-  grid-column: 2;
-  padding: 20px; 
+  grid-column: 2; 
 }
