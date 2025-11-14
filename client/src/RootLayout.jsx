@@ -6,11 +6,11 @@ function RootLayout() {
 
   return (
     <>
-    <div class="page-layout">
-      <div class="nav-layout">
+    <div className="page-layout">
+      <div className="nav-layout">
         <Nav />
       </div>
-      <div class="main-content">
+      <div className="main-content">
         <Outlet />
       </div>
     </div>

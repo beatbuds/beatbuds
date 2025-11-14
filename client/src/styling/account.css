@@ -8,3 +8,36 @@
     overflow: hidden;
     border-radius: 100%;
 }
+
+.form-widget {
+    border: 2px solid var(--bg-mid);
+    border-radius: 10px;
+    padding: 2rem;
+    max-width: 800px;
+    margin-inline: auto;
+}
+
+.pfp-container img{
+    border: 2px solid var(--bg-mid);
+}
+
+.form-widget input[type="text"]{
+    background-color: var(--bg-mid);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-inline: 0.2rem;
+    color: var(--text-mid);
+    width: 100%;
+}
+
+.form-widget label{
+    margin-top: 1rem;
+}
+
+
+.form-widget button{
+    padding: 0.8rem;
+    border-radius: 0.2rem;
+    margin-top: 1rem;
+}
+
