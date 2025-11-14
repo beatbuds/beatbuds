@@ -17,7 +17,7 @@ function App() {
           speed={0.55}
         />
       </div>
-        <div class="top-container" style={{position:"absolute"}}>
+        <div className="top-container" style={{position:"absolute"}}>
           <h1>beatbuds</h1>
           <ul>
             <li>

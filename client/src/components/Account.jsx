@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient.js'
 import Avatar from './Avatar.jsx'
 import '../styling/account.css'
+import { useNavigate } from 'react-router-dom'
 
-export default function Account({ session }) {
+// onProfileLoaded passes the profile data to a callback function
+export default function Account({ session, onProfileLoaded }) {
   const [loading, setLoading] = useState(true)
   const [name, setName] = useState(null)
   const [musicChoice, setMusicChoice] = useState(null)
@@ -32,6 +34,14 @@ export default function Account({ session }) {
           setIsPrivate(data.private)
           setMusicChoice(data.musicChoice)
           setAvatarUrl(data.avatar_url)
+
+          onProfileLoaded(
+          {
+            name: data.name, 
+            musicChoice: data.musicChoice, 
+            isPrivate: data.private, 
+            avatar_url: data.avatar_url
+          }, data.avatar_url);
         }
       }
 
@@ -76,9 +86,21 @@ export default function Account({ session }) {
     } else {
       // Make sure state is updated if avatar was changed
       setAvatarUrl(finalAvatarUrl)
+
       alert('Profile updated successfully!')
+      setLoading(false)
+      onProfileLoaded({
+        name: name, 
+        musicChoice: musicChoice, 
+        isPrivate: isPrivate, 
+        avatar_url: finalAvatarUrl
+      }, finalAvatarUrl);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
     }
-    setLoading(false)
   }
 
   return (

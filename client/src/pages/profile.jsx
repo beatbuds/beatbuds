@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 function Profile() {
     const [session, setSession] = useState(null)
     const navigate = useNavigate()
+    const [profile, setProfile] = useState(null);
 
     useEffect(() => {
         // Fetch the session on component load
@@ -38,26 +39,43 @@ function Profile() {
         return <p>Loading...</p> // Or any loading spinner
     }
 
+    async function downloadImage(path) {
+        try {
+        const { data, error } = await supabase.storage.from('profile-pics').download(path)
+        if (error) {
+            throw error
+        }
+        const url = URL.createObjectURL(data)
+        setProfile(prev => ({...prev, avatar_url: url}))
+        } catch (error) {
+        console.log('Error downloading image: ', error.message)
+        }
+    }
+
+    async function onProfileLoaded(profile, path){
+        setProfile(profile);
+        downloadImage(path);
+    }
+
+
     // If session exists, render the Account
     return (
         <>
-            <Account key={session.user.id} session={session} />
-            
+            {
+            profile ? 
             <div className="profile-page">
                 {/* Top div holds pfp, name, followers, etc. */}
                 <div className="profile-top flex">
                     {/* Image div wrapper for sizing control */}
                     <div className="pfp-wrapper">
-                        <img src="https://images.unsplash.com/photo-1653423954398-7a83c64049f6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687" alt="" />
+                        <img src={profile.avatar_url} alt="" />
                     </div>
                     <div className="profile-desc">
                         <div className="profile-tags flex">
-                            <span className="dark-txt">Wave</span>
-                            <span className="dark-txt">Jazz</span>
-                            <span className="dark-txt">EDM</span>
+                            <span className="dark-txt">{profile.musicChoice}</span>
                         </div>
                         <div className="profile-desc-top flex">
-                            <h2>Jalen Williams</h2>
+                            <h2>{profile.name}</h2>
                             <p>1K + followers</p>
                             <p>2K + following</p>
                         </div>
@@ -84,6 +102,11 @@ function Profile() {
                     </div>
                 </div>
             </div>
+            :
+            <>Loading profile...</>
+            }
+
+            <Account key={session.user.id} session={session} onProfileLoaded={onProfileLoaded}/>
         </>
     );
 }

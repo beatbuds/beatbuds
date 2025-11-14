@@ -1,0 +1,5 @@
+.avi-upload-btn{
+    padding: 0.4rem;
+    outline: 3px solid var(--bg-mid);
+    border-radius: 0.2rem;
+}
