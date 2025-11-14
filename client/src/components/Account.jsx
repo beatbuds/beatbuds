@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient.js'
 import Avatar from './Avatar.jsx'
+import '../styling/account.css'
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true)
@@ -83,69 +84,72 @@ export default function Account({ session }) {
   return (
     // Pass the main updateProfile function to onSubmit
     <form onSubmit={updateProfile} className="form-widget">
-      <Avatar
-        url={avatar_url}
-        size={150}
-        onUpload={(event, url) => {
-          // When avatar is uploaded, call updateProfile directly
-          // This saves the avatar *immediately*
-          updateProfile(event, url)
-        }}
-      />
-    
-      {/* Email (disabled) */}
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={session.user.email} disabled />
-      </div>
-
-      {/* Name (was username) */}
-      <div>
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          required
-          value={name || ''}
-          onChange={(e) => setName(e.target.value)}
+      <div className="pfp-container">
+        <Avatar
+          url={avatar_url}
+          size={150}
+          onUpload={(event, url) => {
+            // When avatar is uploaded, call updateProfile directly
+            // This saves the avatar *immediately*
+            updateProfile(event, url)
+          }}
         />
       </div>
 
-      {/* Music Choice (new) */}
-      <div>
-        <label htmlFor="musicChoice">Music Choice</label>
-        <input
-          id="musicChoice"
-          type="text"
-          value={musicChoice || ''}
-          onChange={(e) => setMusicChoice(e.target.value)}
-        />
-      </div>
       
-      {/* Private (new) */}
-      <div>
-        <label htmlFor="private">Private Account</label>
-        <input
-          id="private"
-          type="checkbox"
-          checked={isPrivate}
-          onChange={(e) => setIsPrivate(e.target.checked)}
-        />
-      </div>
+        {/* Email (disabled) */}
+        <div>
+          <label htmlFor="email">Email</label>
+          <input id="email" type="text" value={session.user.email} disabled />
+        </div>
 
-      {/* Update Button */}
-      <div>
-        <button className="button block primary" type="submit" disabled={loading}>
-          {loading ? 'Loading ...' : 'Update Profile'}
-        </button>
-      </div>
+        {/* Name (was username) */}
+        <div>
+          <label htmlFor="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            required
+            value={name || ''}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
 
-      {/* Sign Out Button */}
-      <div>
-        <button className="button block" type="button" onClick={() => supabase.auth.signOut()}>
-          Sign Out
-        </button>
-      </div>
+        {/* Music Choice (new) */}
+        <div>
+          <label htmlFor="musicChoice">Music Choice</label>
+          <input
+            id="musicChoice"
+            type="text"
+            value={musicChoice || ''}
+            onChange={(e) => setMusicChoice(e.target.value)}
+          />
+        </div>
+        
+        {/* Private (new) */}
+        <div>
+          <label htmlFor="private">Private Account</label>
+          <input
+            id="private"
+            type="checkbox"
+            checked={isPrivate}
+            onChange={(e) => setIsPrivate(e.target.checked)}
+          />
+        </div>
+
+        {/* Update Button */}
+        <div>
+          <button className="button block primary" type="submit" disabled={loading}>
+            {loading ? 'Loading ...' : 'Update Profile'}
+          </button>
+        </div>
+
+        {/* Sign Out Button */}
+        <div>
+          <button className="button block" type="button" onClick={() => supabase.auth.signOut()}>
+            Sign Out
+          </button>
+        </div>
     </form>
   )
 }

@@ -1,0 +1,10 @@
+.pfp-container img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    height: 220px;
+    max-width: 220px;
+    overflow: hidden;
+    border-radius: 100%;
+}
