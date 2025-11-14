@@ -1,5 +1,6 @@
 import "../styling/profile.css"
-
+import { userState, useEffect} from 'react'
+import { supabase } from '../components/supabaseClient.js'
 
 function Profile(){
     return(
