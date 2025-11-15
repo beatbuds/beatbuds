@@ -36,14 +36,14 @@ function Nav() {
                         <Link to="/"><img src={logo} alt="bb-logo" className="logo-icon"></img></Link>
                         {/* Home */}
                     </li>
-                    {!session ? (
+                    {/* {!session ? ( */}
                         <li className="active">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-120v-80h280v-560H480v-80h280q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H480Zm-80-160-55-58 102-102H120v-80h327L345-622l55-58 200 200-200 200Z"/></svg>
                             <Link to="/LoginPage">login/signup</Link> 
                             {/* LoginPage */}
                         </li>   
-                    ) : (
-                    <>
+                    {/* ) : (
+                    <> */}
                         <li className="active">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M400-120q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T480-418v-422h240v160H560v400q0 66-47 113t-113 47Z" /></svg>
                             <Link to="/MusicPlayer">music player</Link>
@@ -68,9 +68,9 @@ function Nav() {
                             className="button block"
                             onClick={() => supabase.auth.signOut()}>Sign Out
                         </button>
-                    </>
+                    {/* </>
                         
-                    )}
+                    )} */}
 
                     
                 </ul>

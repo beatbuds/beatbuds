@@ -21,7 +21,7 @@ function App() {
           <h1>beatbuds</h1>
           <ul>
             <li>
-              <h2>for music-lovers, by music lovers</h2>
+              <h2>for music-lovers, by music-lovers</h2>
             </li>
           </ul>
         </div>

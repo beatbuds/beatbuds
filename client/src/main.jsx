@@ -11,6 +11,7 @@ import Settings from './pages/Settings.jsx'
 import Communities from './pages/Communities.jsx'
 import MusicPlayer from './pages/MusicPlayer.jsx'
 import Fyp from './pages/Fyp.jsx'
+import CallbackPage from './pages/Callback.jsx'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       {path:"/Settings", element: <Settings />},
       {path:"/Communities", element: <Communities />},
       {path:"/Fyp", element: <Fyp />},
+      {path:"/callback", element: <CallbackPage/>},
     ],
   },
 ]);
