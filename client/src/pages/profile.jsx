@@ -2,7 +2,7 @@ import "../styling/profile.css"
 import { useState, useEffect } from 'react' // Import useState and useEffect
 import { supabase } from '../components/supabaseClient.js'
 import Account from "../components/Account.jsx";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate, Link } from "react-router-dom"; // Import useNavigate
 
 function Profile() {
     const [session, setSession] = useState(null)
@@ -79,11 +79,11 @@ function Profile() {
                             <p>1K + followers</p>
                             <p>2K + following</p>
                         </div>
+                                                <Link className="post-button" to="/createPost">Create Post</Link>
+
                         <p>Liquid Ritual - I...</p>
                         <div>I’m Jalen Williams, a DJ blending smooth, atmospheric wave music with flowing, cinematic grooves.</div>
-
                     </div>
-
                 </div>
 
                 {/* Bottom div holds profile nav (posts, respots, likes, etc.) */}
