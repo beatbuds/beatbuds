@@ -11,6 +11,8 @@ import Settings from './pages/Settings.jsx'
 import Communities from './pages/Communities.jsx'
 import MusicPlayer from './pages/MusicPlayer.jsx'
 import Fyp from './pages/Fyp.jsx'
+import NotFound from './pages/NotFound.jsx'
+import CreatePost from './pages/createPost.jsx'
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,8 @@ const router = createBrowserRouter([
       {path:"/Profile", element: <Profile />},
       {path:"/Settings", element: <Settings />},
       {path:"/Communities", element: <Communities />},
+      {path: "/CreatePost", element: <CreatePost />},
+      {path: "*", element: <NotFound />},
       {path:"/Fyp", element: <Fyp />},
     ],
   },
