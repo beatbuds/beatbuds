@@ -1,3 +1,4 @@
+//main.jsx
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
@@ -12,6 +13,7 @@ import Communities from './pages/Communities.jsx'
 import MusicPlayer from './pages/MusicPlayer.jsx'
 import Fyp from './pages/Fyp.jsx'
 import CallbackPage from './pages/Callback.jsx'
+
 
 const router = createBrowserRouter([
   {

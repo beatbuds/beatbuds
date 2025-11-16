@@ -1,52 +1,75 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import axios from 'axios';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const app = express();
-require('dotenv').config()
-
-app.use(cors());
 app.use(express.json());
+app.use(cors({
+  origin: ['http://127.0.0.1:5173']
+}));
 
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const REDIRECT_URI = 'http://127.0.0.1:5173/callback';
+const TOKEN_URL = "https://accounts.spotify.com/api/token";
 
+// exchange the authorization code for access + refresh tokens
 app.post('/api/token', async (req, res) => {
   const { code } = req.body;
 
-  const params = new URLSearchParams();
-  params.append('grant_type', 'authorization_code');
-  params.append('code', code);
-  params.append('redirect_uri', REDIRECT_URI);
+  const params = new URLSearchParams({
+    grant_type: "authorization_code",
+    code,
+    redirect_uri: process.env.VITE_REDIRECT_URI
+  });
+
+  const authHeader = Buffer.from(
+    `${process.env.VITE_CLIENT_ID}:${process.env.VITE_CLIENT_SECRET}`
+  ).toString('base64');
 
   try {
-    const response = await fetch('https://accounts.spotify.com/api/token', {
-      method: 'POST',
+    const response = await axios.post(TOKEN_URL, params.toString(), {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + Buffer.from(CLIENT_ID + ':' + CLIENT_SECRET).toString('base64'),
-      },
-      body: params,
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": `Basic ${authHeader}`
+      }
     });
 
-    const data = await response.json();
+    res.json(response.data);
+  } catch (e) {
+    console.error("Token exchange error:", e.response?.data || e.message);
+    res.status(400).json({ error: "Token exchange failed" });
+  }
+});
 
-    if (!response.ok) {
-      throw new Error(data.error_description || 'Failed to get token');
-    }
+// refresh the access token
+app.post('/api/refresh', async (req, res) => {
+  const { refresh_token } = req.body;
 
-    // Send the tokens back to the React frontend
-    res.json({
-      access_token: data.access_token,
-      refresh_token: data.refresh_token,
-      expires_in: data.expires_in,
+  const params = new URLSearchParams({
+    grant_type: "refresh_token",
+    refresh_token
+  });
+
+  const authHeader = Buffer.from(
+    `${process.env.VITE_CLIENT_ID}:${process.env.VITE_CLIENT_SECRET}`
+  ).toString('base64');
+
+  try {
+    const response = await axios.post(TOKEN_URL, params.toString(), {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": `Basic ${authHeader}`
+      }
     });
 
-  } catch (error) {
-    console.error('Error on backend:', error);
-    res.status(500).json({ error: error.message });
+    res.json(response.data);
+  } catch (e) {
+    console.error("Refresh error:", e.response?.data || e.message);
+    res.status(400).json({ error: "Refresh token failed" });
   }
 });
 
 app.listen(3000, () => {
-  console.log('Backend server running on port 3000');
+  console.log("Server running on http://127.0.0.1:3000");
 });

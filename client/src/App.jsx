@@ -3,6 +3,12 @@ import './styling/page-layout.css'
 import './App.css'
 
 function App() {
+    const token = localStorage.getItem("spotify_access_token");
+
+    fetch("https://api.spotify.com/v1/me", {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+  
   return (
     <>
     <div className='w-full h-screen relative bg-black flex justify-center items-center'>
@@ -18,7 +24,12 @@ function App() {
         />
       </div>
         <div className="top-container" style={{position:"absolute"}}>
-          <h1>beatbuds</h1>
+          {!token ? ( 
+            <a href="/LoginPage">Login</a>
+          ) : (
+            <h1>beatbuds</h1>
+          )}
+          
           <ul>
             <li>
               <h2>for music-lovers, by music-lovers</h2>

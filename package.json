@@ -2,6 +2,7 @@
   "dependencies": {
     "@supabase-js/source": "github:supabase/supabase-js",
     "@supabase/supabase-js": "^2.81.1",
-    "ogl": "^1.0.11"
+    "ogl": "^1.0.11",
+    "pg": "^8.16.3"
   }
 }
