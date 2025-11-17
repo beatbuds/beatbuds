@@ -11,39 +11,26 @@ function Nav() {
   const navigate = useNavigate();
   const currPath = location.pathname;
 
-  // --- FIX 1 & 2: Use state for reactivity ---
-  // Set the initial state by checking localStorage on load
 const [isLoggedIn, setIsLoggedIn] = useState(
     !!localStorage.getItem("spotify_access_token") 
 );
 
-// This Effect listens for changes to the login status
 useEffect(() => {
     const handleAuthChange = () => {
-      // When the event fires, we re-check localStorage
       const token = localStorage.getItem("spotify_access_token");
-      setIsLoggedIn(!!token); // This forces the Nav component to re-render
+      setIsLoggedIn(!!token); 
     };
-
-    // Listen for the 'authChange' event
     window.addEventListener('authChange', handleAuthChange);
 
     return () => {
-      // Cleanup
       window.removeEventListener('authChange', handleAuthChange);
     };
 }, []);
 
-  // --- FIX 3: Logout Function ---
   const handleLogout = () => {
-    // Remove the tokens
     localStorage.removeItem("spotify_access_token");
     localStorage.removeItem("spotify_refresh_token");
-    
-    // --- Tell the app the auth status has changed ---
     window.dispatchEvent(new Event('authChange')); 
-    
-    // Send the user back to the login page
     navigate('/LoginPage');
   };
 

@@ -44,10 +44,10 @@ export default function Auth() {
           name="email"
           id="email"
           placeholder="jane@gmail.com"
-          className="dark-bg" // Your desired class
-          value={email} // Functional part: links to state
-          required={true} // Functional part: for validation
-          onChange={(e) => setEmail(e.target.value)} // Functional part: updates state
+          className="dark-bg"
+          value={email}
+          required={true}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         {/* Functional part: Added the submit button */}

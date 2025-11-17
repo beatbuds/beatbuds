@@ -1,12 +1,15 @@
-// import {useState, useEffect} from "react";
-// import { supabase } from '../components/supabaseClient.js'
-// import Auth from '../components/Auth.jsx'
-// import Account from '../components/Account.jsx'
-// import { useNavigate } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import {useState, useEffect} from "react";
+import { supabase } from '../components/supabaseClient.js'
+import Auth from '../components/Auth.jsx'
+import Account from '../components/Account.jsx'
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styling/LoginPage.css";
 import "../index.css"
-// LoginPage.jsx
+import { useLocation } from "react-router-dom";
+
+import Particles from './Particles.jsx';
+
 
 function LoginPage() {
   const SPOTIFY_CLIENT_ID =import.meta.env.VITE_CLIENT_ID;
@@ -15,8 +18,30 @@ function LoginPage() {
     'user-read-private',
     'user-read-email',
     'playlist-read-private',
+    'user-top-read'
     // Add any other scopes your "beatbuds" app needs
   ];
+
+  //to check if logged in
+  const location = useLocation();
+  const navigate = useNavigate();
+  const currPath = location.pathname;
+
+  const [isLoggedIn, setIsLoggedIn] = useState(
+      !!localStorage.getItem("spotify_access_token") 
+  );
+
+  useEffect(() => {
+      const handleAuthChange = () => {
+        const token = localStorage.getItem("spotify_access_token");
+        setIsLoggedIn(!!token); 
+      };
+      window.addEventListener('authChange', handleAuthChange);
+
+      return () => {
+        window.removeEventListener('authChange', handleAuthChange);
+      };
+  }, []); // see if they're logged in
 
   const handleLogin = () => {
     const authEndpoint = 'https://accounts.spotify.com/authorize';
@@ -32,9 +57,26 @@ function LoginPage() {
   };
 
   return (
-    <button onClick={handleLogin}>
-      Login with Spotify
-    </button>
+    <>
+    {!isLoggedIn ? (
+      <>
+      <div className='w-full h-screen relative bg-black'>         
+        <div style={{ width: '100%', height: '100%', position: 'fixed', top: 0, left: 0 }}>
+            <Particles
+            />
+        </div>
+        <div className="button-container">
+            <button onClick={handleLogin}>
+                connect with spotify
+            </button>
+        </div>
+    </div>
+      </>
+      ) : (
+      <span></span>
+    )}
+  </>
+
   );
 }
 

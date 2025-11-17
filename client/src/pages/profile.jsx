@@ -36,7 +36,7 @@ function Profile() {
 
     // Render a loading state or nothing while session is being fetched
     if (!session) {
-        return <p>Loading...</p> // Or any loading spinner
+        return <p>Loading...</p> // Or any loading spinne
     }
 
     async function downloadImage(path) {

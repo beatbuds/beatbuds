@@ -9,9 +9,10 @@ import './App.css';
 function App() {
   const [user, setUser] = useState(null);
   const [pfp, setPfp] = useState(null);
-  const navigate = useNavigate(); // Hook for redirecting
-
-  // Helper function to set user state
+  const navigate = useNavigate(); 
+  const currTime = new Date();
+  const hour = currTime.getHours();
+  const greetings = ["Good morning, ","Good Afternoon, ", "Good Evening, "]
   const handleUserData = (data) => {
     if (data.display_name) {
       setUser(data.display_name);
@@ -21,7 +22,6 @@ function App() {
     }
   };
 
-  // Helper function to call your /api/refresh endpoint
   const refreshToken = async () => {
     const currentRefreshToken = localStorage.getItem('spotify_refresh_token');
     if (!currentRefreshToken) {
@@ -45,16 +45,14 @@ function App() {
       // Save the new access token
       localStorage.setItem('spotify_access_token', data.access_token);
       
-      // Spotify *may* send a new refresh token. If it doesn't, the old one is still valid.
       if (data.refresh_token) {
         localStorage.setItem('spotify_refresh_token', data.refresh_token);
       }
       
-      return data.access_token; // Return the new token
+      return data.access_token;
 
     } catch (error) {
       console.error('Refresh failed:', error.message);
-      // If refresh fails, clear tokens and send to login
       localStorage.removeItem('spotify_access_token');
       localStorage.removeItem('spotify_refresh_token');
       navigate('/LoginPage');
@@ -110,14 +108,15 @@ function App() {
         <div style={{ width: '100%', height: '600px' }}>
           <Aurora
             colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-            blend={0.9}
-            amplitude={.5}
-            speed={0.55}
+            blend={3.9}
+            amplitude={.75}
+            speed={0.75}
           />
         </div>
         <div className="top-container" style={{ position: "absolute" }}>
           {user ? (
             <>
+            {/* TODO: ADD CERTAIN GREETINGS BASED ON HOUR OF DAY */}
               <h1>Welcome back, {user}!</h1>
               <img src={pfp} id="ppf-container" height="200px" width="200px" alt="Profile"/>
             </>
