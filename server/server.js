@@ -121,6 +121,37 @@ app.get('/api/spotify/me', async (req, res) => {
     }
 });
 
+app.get('/api/spotify/top/tracks', async (req, res) => {
+    const access_token = req.headers.authorization?.split(' ')[1];
+    
+    if (!access_token) {
+        return res.status(401).json({ error: 'No access token provided.' });
+    }
+    const { time_range = 'long_term', limit = 5 } = req.query;
+    try {
+        const url = `https://api.spotify.com/v1/me/top/tracks?time_range=${time_range}&limit=${limit}`;
+
+        const response = await fetch(url, {
+            headers: {
+                'Authorization': `Bearer ${access_token}`
+            }
+        });
+        
+        const data = await response.json();
+        console.log(data)
+        if (!response.ok) {
+            console.error('Spotify Top Tracks Error:', data);
+            return res.status(response.status).json(data);
+        }
+
+        res.json(data);
+
+    } catch (error) {
+        console.error('Top Tracks API Proxy Error:', error);
+        res.status(500).json({ error: 'Failed to fetch top tracks.' });
+    }
+});
+
 app.post('/api/token', async (req, res) => {
   const { code } = req.body;
 
