@@ -1,4 +1,4 @@
-.login-page{
+/* .login-page{
     max-width: 1500px;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -17,7 +17,7 @@
 }
 
 /* Banner image wrapper for sizing control */
-.login-banner > div{
+/* .login-banner > div{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,10 +32,10 @@
     background-color: var(--bg-mid);
     max-width: 300px;
     padding: 10px;
-}
+} */
 
 /* Image fills div wrapper for more sizing control */
-.login-banner > div > img{
+/* .login-banner > div > img{
     width: 100%;
 }
 
@@ -71,4 +71,43 @@
 .login-welcome{
     margin-top: 2rem;
     justify-content: space-between;
+}  */
+
+.main-content {
+    background-color: black;
+}
+.button-container {
+    position:fixed;
+    height: 100%; 
+    width: 100%; 
+    z-index: 20;
+}
+
+.button-container button { 
+    position: absolute;
+    top: 50%;   
+    left: 45%;
+    transform: translate(-50%, -50%); 
+    font-family: "Cormorant", serif; 
+    font-weight: bold;
+    font-size: 1.2rem;
+    width: auto;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    background-color: #1ED760; 
+    color: var(--text-dark); 
+    border-radius: 60px;
+    text-align: center;
+    padding: 1.5em;
+    font-size: 30px;
+    font-weight: 900;
+    color: white;
+    border-style:solid;
+    border-width: 4px;
+    border-color: darkgrey;
+    opacity: 80%;
+}
+.button-container button:hover {
+    opacity: 100%;
 }

@@ -59,14 +59,12 @@ export default function Account({ session, onProfileLoaded }) {
     // This function will be called by *either* the form submit or the Avatar upload
     // If it's a form submit, event will be defined and avatarUrl will be undefined
     // If it's an avatar upload, event and avatarUrl will be defined
-    
     if (event) {
         event.preventDefault()
     }
 
     setLoading(true)
     const { user } = session
-
     // Use the 'avatarUrl' from the argument if it exists (from Avatar component),
     // otherwise use the one from state (from form submit)
     const finalAvatarUrl = avatarUrl || avatar_url
@@ -117,8 +115,6 @@ export default function Account({ session, onProfileLoaded }) {
           }}
         />
       </div>
-
-      
         {/* Email (disabled) */}
         <div>
           <label htmlFor="email">Email</label>

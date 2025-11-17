@@ -1,3 +1,13 @@
+
+.form-widget {
+    border: 2px solid var(--bg-mid);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-inline: auto;
+    max-width: 800px;
+    background-color: var(--bg-dark);
+}
+
 .pfp-container img{
     display: flex;
     justify-content: center;
@@ -7,31 +17,21 @@
     max-width: 220px;
     overflow: hidden;
     border-radius: 100%;
-}
-
-.form-widget {
-    border: 2px solid var(--bg-mid);
-    border-radius: 10px;
-    padding: 2rem;
-    max-width: 800px;
-    margin-inline: auto;
-}
-
-.pfp-container img{
-    border: 2px solid var(--bg-mid);
+    border: 4px solid var(--bg-mid);
 }
 
 .form-widget input[type="text"]{
     background-color: var(--bg-mid);
     padding-top: 1rem;
     padding-bottom: 1rem;
-    padding-inline: 0.2rem;
+    padding-inline: 0.5rem;
     color: var(--text-mid);
     width: 100%;
 }
 
 .form-widget label{
     margin-top: 1rem;
+    border-radius: 15px;
 }
 
 
@@ -39,5 +39,8 @@
     padding: 0.8rem;
     border-radius: 0.2rem;
     margin-top: 1rem;
+    color: black;
 }
-
+.form-widget input {
+    border-radius: 15px;
+}

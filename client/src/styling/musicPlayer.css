@@ -1,0 +1,55 @@
+.player-container {
+    margin-inline: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    background-color: rgb(27, 27, 27);
+    outline: 2px solid var(--bg-mid);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+}
+
+.player-container .album-container {
+    margin-inline: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;    
+    height: 600px;
+    width: 600px;
+    background-color: rgb(70, 70, 70);
+    box-sizing: border-box;
+}
+
+.player-container .music-control-container {
+    margin-inline: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    max-width:600px;
+    background-color: rgb(10, 10, 10);
+    outline: 2px solid var(--bg-mid);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;    
+}
+.music-control-container button{
+    background-color: black;
+    margin-inline: auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+
+.music-control-container .previous-button{
+    grid-column: 1;
+}
+.music-control-container .play-button {
+    grid-column: 2;
+}
+.music-control-container .next-button { 
+    grid-column: 3;
+}
+

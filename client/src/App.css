@@ -8,6 +8,7 @@ body {
     text-align: center;
     z-index: 10;
     margin-left: 50px;
+    margin-top: 50px;
 }
 
 
@@ -18,4 +19,18 @@ body {
 }
 .top-container h2 {
     font-size: 35px;
+}
+.top-container img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    height: 300px;
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: 100%;
+    margin-right: 50px;
+    border-style: solid;
+    border-color: black;
+    border-width: 6px;
 }

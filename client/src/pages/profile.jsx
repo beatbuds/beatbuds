@@ -10,7 +10,6 @@ function Profile() {
     const [profile, setProfile] = useState(null);
 
     useEffect(() => {
-        // Fetch the session on component load
         supabase.auth.getSession().then(({ data: { session } }) => {
             if (session) {
                 setSession(session)
@@ -20,23 +19,19 @@ function Profile() {
             }
         })
 
-        // Optional: Listen for auth state changes (e.g., user logs out)
         const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
             if (!session) {
-                // If user logs out, redirect to login
                 navigate('/')
             } else {
-                setSession(session) // Keep session in sync
+                setSession(session) 
             }
         });
 
-        // Cleanup the subscription on component unmount
         return () => subscription.unsubscribe()
-    }, [navigate]) // Add navigate as a dependency
+    }, [navigate]) 
 
-    // Render a loading state or nothing while session is being fetched
     if (!session) {
-        return <p>Loading...</p> // Or any loading spinner
+        return <p>Loading...</p> // load load load
     }
 
     async function downloadImage(path) {
@@ -56,8 +51,6 @@ function Profile() {
         setProfile(profile);
         downloadImage(path);
     }
-
-
     // If session exists, render the Account
     return (
         <>
@@ -79,7 +72,7 @@ function Profile() {
                             <p>1K + followers</p>
                             <p>2K + following</p>
                         </div>
-                                                <Link className="post-button" to="/createPost">Create Post</Link>
+                         <Link className="post-button" to="/createPost">Create Post</Link>
 
                         <p>Liquid Ritual - I...</p>
                         <div>I’m Jalen Williams, a DJ blending smooth, atmospheric wave music with flowing, cinematic grooves.</div>
