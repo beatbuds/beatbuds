@@ -1,156 +1,92 @@
-/* --- Use root variables if you have them in index.css --- */
-:root {
-  --bg-dark: #121212;
-  --bg-mid: #28292a;
-  --text-light: #edede9;
-  --text-dark: #3a3b3c;
-  --bg-primary: #87d78b;
-  --hover-clr: #2f2f2f;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  z-index:30;
+  margin-top: 5%;
 }
 
-/* --- 1. Full Page Wrapper --- */
-.login-sb-page {
+/* LEFT SIDE */
+.left-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-  overflow: hidden; /* Prevents scrollbars from Aurora */
-  position: relative; /* Context for absolute children */
-}
-
-/* --- 2. Header "beatbuds" --- */
-.login-sb-header {
-  text-align: center;
-  padding-top: 3vh; /* Small space from top */
-  z-index: 10; /* Keep title on top of Aurora */
-}
-
-.login-sb-header h1 {
-  font-family: "Cormorant", serif;
-  font-size: 4rem;
-  font-weight: 900;
-  color: white;
-  margin: 0;
-}
-
-/* --- 3. Aurora Background Container --- */
-.aurora-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 40vh; /* Control how much space the aurora takes */
-  z-index: 1; /* Sits behind text, in front of bg */
-  opacity: 0.8;
-}
-
-/* --- 4. Main Content (The Auth component) --- */
-.login-sb-content {
-  flex-grow: 1; /* Takes up the rest of the vertical space */
-  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  z-index: 10; /* Keep content on top of Aurora */
+  margin-top: 0;
 }
 
-/* --- 5. Overriding Auth.jsx classes --- 
-  These styles force your <Auth /> component's content 
-  into the two-column layout.
-*/
+.left-container h1 {
+  font-size: 120px;
+  margin-bottom: 0;
+}
+.left-container h2 {
+  font-style: italic;
+}
 
-/* This is the .login-page div inside Auth.jsx */
+.right-container {
+  grid-template-rows: auto auto auto;
+  display: flex;
+  flex-direction: column;
+}                     
+.right-container .login-banner img {
+  width: 100%;
+}
+
+.left-container img {
+  height: 150px;
+  flex-grow: 0;
+}
+.right-container .login-welcome > p{
+    font-size: 40px;
+    margin: 0;
+}
+
+.right-container .login-page {
+
+  gap:2em;
+}
+
 .login-page {
   display: flex;
-  flex-direction: row; /* Force side-by-side */
-  width: 100%;
-  max-width: 1200px; /* Limit the max width */
-  background-color: var(--bg-mid); /* Give it a card background */
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  overflow: hidden; /* Keep rounded corners on image */
-}
-
-/* This is the .login-banner div inside Auth.jsx */
-.login-banner {
-  flex: 1; /* Takes up 50% of the space */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row; 
   align-items: center;
-  padding: 2rem;
 }
 
-.login-banner img {
-  width: 100%;
-  height: auto;
-  max-height: 600px;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.login-banner p {
-  font-size: 1.25rem;
-  font-style: italic;
-  margin-top: 1rem;
-  text-align: center;
-}
-
-/* This is the .login-widget form inside Auth.jsx */
-.login-widget {
-  flex: 1; /* Takes up the other 50% */
+.auth-form {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center the form vertically */
-  padding: 3rem 4rem;
-  gap: 1.5rem; /* Space between form elements */
-}
-
-.login-welcome p {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: white;
-  margin: 0;
-}
-
-.login-widget label {
-  font-size: 0.9rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: var(--text-light);
-  opacity: 0.7;
-}
-
-.login-widget input {
-  background-color: var(--bg-dark);
-  border: 1px solid var(--hover-clr);
-  color: white;
-  padding: 12px 15px;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.login-widget .button {
+  gap: 1.5rem; 
+  max-width: 400px; 
   width: 100%;
-  padding: 15px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  background-color: var(--bg-primary); /* Your green color */
-  color: var(--text-dark);
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: transform 0.2s;
+}
+.auth-form label{
+  margin-top:10px;
+  font-size: 20px;
+}
+.auth-form input {
+  font-size: 25px;
+  border-radius: 15px;
+  height: 50px;
 }
 
-.login-widget .button:hover:not(:disabled) {
-  transform: scale(1.02);
-  opacity: 1;
+.auth-form button {
+  border-radius: 13px;
+  font-size: 20px
 }
 
-.login-widget .button:disabled {
-  background-color: var(--hover-clr);
-  cursor: not-allowed;
+.login-banner > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 2rem;
+}
+
+.login-banner > p{
+    background-color: var(--bg-mid);
+    max-width: 300px;
+    padding: 10px;
 }

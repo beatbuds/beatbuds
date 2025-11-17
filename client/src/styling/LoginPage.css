@@ -83,7 +83,7 @@
     z-index: 20;
 }
 
-button { 
+.button-container button { 
     position: absolute;
     top: 50%;   
     left: 45%;
@@ -108,6 +108,6 @@ button {
     border-color: darkgrey;
     opacity: 80%;
 }
-button:hover {
+.button-container button:hover {
     opacity: 100%;
 }

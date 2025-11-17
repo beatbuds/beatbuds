@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabase } from './supabaseClient.js'
+import '../styling/LoginPageSB.css' 
 
 export default function Auth() {
   const [loading, setLoading] = useState(false)
@@ -33,7 +34,7 @@ export default function Auth() {
       </div>
 
       {/* Login Form */}
-      <form className="login-widget" onSubmit={handleLogin}>
+      <form class="auth-form" onSubmit={handleLogin}>
         <div className="flex login-welcome">
           <p>Welcome Back!</p>
         </div>
@@ -49,12 +50,10 @@ export default function Auth() {
           required={true}
           onChange={(e) => setEmail(e.target.value)}
         />
-
-        {/* Functional part: Added the submit button */}
         <div>
-          <button className={'button block'} disabled={loading}>
-            {loading ? <span>Loading...</span> : <span>Send login link</span>}
-          </button>
+        <button className={'button block'} disabled={loading}>
+          {loading ? <span>Loading...</span> : <span>Send login link</span>}
+        </button>
         </div>
       </form>
     </div>
