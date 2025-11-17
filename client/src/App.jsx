@@ -9,6 +9,7 @@ import './App.css';
 function App() {
   const [user, setUser] = useState(null);
   const [pfp, setPfp] = useState(null);
+  const [email,setEmail]=useState(null);
   const navigate = useNavigate(); 
   const currTime = new Date();
   const hour = currTime.getHours();
@@ -20,6 +21,10 @@ function App() {
     if (data.images && data.images[0]) {
       setPfp(data.images[0].url);
     }
+    if(data.email) {
+      setEmail(data.email)
+    }
+
   };
 
   const refreshToken = async () => {
@@ -81,7 +86,7 @@ function App() {
           const newAccessToken = await refreshToken();
           
           if (newAccessToken) {
-            // Retry the request with the new token
+            // Keep trying to get a new token
             fetchUserData(newAccessToken); // Recursive call
           }
         } else if (!res.ok) {
@@ -117,8 +122,8 @@ function App() {
           {user ? (
             <>
             {/* TODO: ADD CERTAIN GREETINGS BASED ON HOUR OF DAY */}
+            <img src={pfp} id="ppf-container" alt="Profile"/>
               <h1>Welcome back, {user}!</h1>
-              <img src={pfp} id="ppf-container" height="200px" width="200px" alt="Profile"/>
             </>
           ) : (
             <>
