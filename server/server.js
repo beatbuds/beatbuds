@@ -32,6 +32,80 @@ app.get('/login', function(req, res) {
       state: state
     }));
 });
+app.put('/api/spotify/transfer', async (req, res) => {
+    const access_token = req.headers.authorization?.split(' ')[1];
+    const { device_id } = req.body;
+
+    if (!access_token) return res.status(401).json({ error: 'No access token' });
+    if (!device_id) return res.status(400).json({ error: 'Missing device_id' });
+
+    try {
+        const response = await fetch("https://api.spotify.com/v1/me/player", {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${access_token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                device_ids: [device_id],
+                play: false // Set play to false so music doesn't auto-start mid-transfer
+            })
+        });
+
+        // The transfer endpoint returns a 204 No Content on success.
+        if (response.status === 204)
+            return res.status(200).json({ success: true });
+
+        const err = await response.json().catch(() => ({ message: 'Unknown Spotify error' }));
+        return res.status(response.status).json(err);
+
+    } catch (err) {
+        console.error("Transfer error:", err);
+        res.status(500).json({ error: "Failed to transfer playback" });
+    }
+});
+
+
+app.put('/api/spotify/play', async (req, res) => {
+    // 1. Get the Access Token from the client's Authorization header
+    const access_token = req.headers.authorization?.split(' ')[1];
+    const { device_id, track_uri } = req.body;
+
+    if (!access_token) {
+        return res.status(401).json({ error: 'No access token provided.' });
+    }
+    if (!device_id || !track_uri) {
+        return res.status(400).json({ error: 'Missing device_id or track_uri.' });
+    }
+
+    const SPOTIFY_PLAY_URL = `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`;
+
+    try {
+        const response = await fetch(SPOTIFY_PLAY_URL, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${access_token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                uris: [track_uri] 
+            })
+        });
+
+        if (response.status === 204) {
+            return res.status(200).json({ success: true });
+        } else {
+            const errorData = await response.json().catch(() => ({ message: 'Unknown Spotify error' }));
+            console.error('Spotify Playback API Error:', errorData);
+            return res.status(response.status).json(errorData);
+        }
+
+    } catch (error) {
+        console.error('Playback Proxy Error:', error);
+        res.status(500).json({ error: 'Failed to communicate with Spotify Player API.' });
+    }
+});
+
 
 app.get('/callback', function(req, res) {s
 

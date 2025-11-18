@@ -3,18 +3,21 @@ body {
 }
 
 .user-container {
+    
     display: flex;  
     flex-direction: column;
 }
 
-.user-container .top-container {
+.user-container .top-user-container {
     margin-top: 0px;
     display: flex;  
     flex-direction: row;
     align-items: center;
     text-align: center;
     z-index: 10;
-    margin-left: 50px;
+    margin-left: 25px;
+    margin-bottom: 90px;
+    margin-top: 25px;
 }
 
 
