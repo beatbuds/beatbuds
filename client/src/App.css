@@ -1,36 +1,8 @@
-body {
-    margin: 0;
-}
- .top-container {
-    display: flex;  
-    flex-direction: row;
-    align-items: center;
-    text-align: center;
-    z-index: 10;
-    margin-left: 50px;
-    margin-top: 50px;
-}
-
-
-.top-container h1 {
-    font-size: 80px;
-    font-weight: 900;
-    
-}
-.top-container h2 {
-    font-size: 35px;
-}
-.top-container img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    height: 300px;
-    max-width: 300px;
-    overflow: hidden;
-    border-radius: 100%;
-    margin-right: 50px;
-    border-style: solid;
-    border-color: black;
-    border-width: 6px;
+.button-primary {
+  background-color: #1ed760;
+  color: #121212;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-decoration: none;
 }

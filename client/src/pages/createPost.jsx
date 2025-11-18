@@ -4,7 +4,7 @@ import "../styling/createPost.css"
   const handleSubmit = (e) => {
     e.preventDefault();
 };
-const CreatePost = () => {
+const CreatePost = ({ session, spotifyLoggedIn, handleLogout }) => {
     return(
         <>
         <form onSubmit={handleSubmit}>

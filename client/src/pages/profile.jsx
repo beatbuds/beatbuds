@@ -15,13 +15,13 @@ function Profile() {
                 setSession(session)
             } else {
                 // No session found, redirect to login page
-                navigate('/')
+                navigate('/LoginPageSB')
             }
         })
 
         const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
             if (!session) {
-                navigate('/')
+                navigate('/HomePage')
             } else {
                 setSession(session) 
             }

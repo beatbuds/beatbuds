@@ -18,8 +18,10 @@ function LoginPage() {
     'user-read-private',
     'user-read-email',
     'playlist-read-private',
-    'user-top-read'
-    // Add any other scopes your "beatbuds" app needs
+    'user-top-read',
+    'streaming',
+    'user-read-playback-state',
+    'user-modify-playback-state'
   ];
 
   //to check if logged in
