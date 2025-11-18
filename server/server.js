@@ -6,6 +6,7 @@ import queryString from 'query-string'
 
 dotenv.config();
 
+// --- FIX: Use the REAL Spotify Token URL ---
 const TOKEN_URL = "https://accounts.spotify.com/api/token";
 
 var CLIENT_ID=process.env.VITE_CLIENT_ID;
@@ -21,20 +22,68 @@ app.use(cors({
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
-  var scope = 'user-read-private user-read-email';
+  var scope = [
+    'user-read-private',
+    'user-read-email',
+    'streaming', 
+    'user-read-playback-state', 
+    'user-modify-playback-state',
+    'user-top-read' 
+  ].join(' '); 
 
   res.redirect('https://accounts.spotify.com/authorize?' +
-    querystring.stringify({
+    queryString.stringify({
       response_type: 'code',
       client_id: CLIENT_ID,
-      scope: scope,
-      redirect_uri: REDIRECT_URI,
+      scope: scope, 
+      redirect_uri:REDIRECT_URI,
       state: state
     }));
 });
 
+app.put('/api/spotify/transfer', async (req, res) => {
+    const access_token = req.headers.authorization?.split(' ')[1];
+    const { device_id } = req.body;
+
+    if (!access_token) {
+        return res.status(401).json({ error: 'No access token provided.' });
+    }
+    if (!device_id) {
+        return res.status(400).json({ error: 'Missing device_id.' });
+    }
+
+    // --- FIX: Use the REAL Spotify Player API URL ---
+    const SPOTIFY_TRANSFER_URL = 'https://api.spotify.com/v1/me/player';
+
+    try {
+        const response = await fetch(SPOTIFY_TRANSFER_URL, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${access_token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                device_ids: [device_id],
+                play: false 
+            })
+        });
+
+        if (response.status === 204) {
+            return res.status(204).send();
+        } else {
+            const errorData = await response.json().catch(() => ({ message: 'Unknown Spotify transfer error' }));
+            console.error('Spotify Transfer API Error:', errorData);
+            return res.status(response.status).json(errorData);
+        }
+
+    } catch (error) {
+        console.error('Transfer Proxy Error:', error);
+        res.status(500).json({ error: 'Failed to communicate with Spotify Player API.' });
+    }
+});
+
+
 app.put('/api/spotify/play', async (req, res) => {
-    // 1. Get the Access Token from the client's Authorization header
     const access_token = req.headers.authorization?.split(' ')[1];
     const { device_id, track_uri } = req.body;
 
@@ -45,6 +94,7 @@ app.put('/api/spotify/play', async (req, res) => {
         return res.status(400).json({ error: 'Missing device_id or track_uri.' });
     }
 
+    // --- FIX: Use the REAL Play URL and pass device_id as a query param ---
     const SPOTIFY_PLAY_URL = `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`;
 
     try {
@@ -73,47 +123,16 @@ app.put('/api/spotify/play', async (req, res) => {
     }
 });
 
-app.put('/api/spotify/transfer', async (req, res) => {
-    const access_token = req.headers.authorization?.split(' ')[1];
-    const { device_id } = req.body;
-
-    if (!access_token) return res.status(401).json({ error: 'No access token' });
-    if (!device_id) return res.status(400).json({ error: 'Missing device_id' });
-
-    try {
-        const response = await fetch("https://api.spotify.com/v1/me/player", {
-            method: "PUT",
-            headers: {
-                "Authorization": `Bearer ${access_token}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                device_ids: [device_id],
-                play: false
-            })
-        });
-
-        if (response.status === 204)
-            return res.json({ success: true });
-
-        const err = await response.json().catch(() => "Unknown");
-        return res.status(response.status).json(err);
-
-    } catch (err) {
-        console.error("Transfer error:", err);
-        res.status(500).json({ error: "Failed to transfer playback" });
-    }
-});
 
 
-app.get('/callback', function(req, res) {s
+app.get('/callback', function(req, res) {
 
   var code = req.query.code || null;
   var state = req.query.state || null;
 
   if (state === null) {
     res.redirect('/#' +
-      querystring.stringify({
+      queryString.stringify({
         error: 'state_mismatch'
       }));
   } else {
@@ -130,6 +149,21 @@ app.get('/callback', function(req, res) {s
       },
       json: true
     };
+
+    request.post(authOptions, function(error, response, body) {
+      if (!error && response.statusCode === 200) {
+        res.redirect('http://127.0.0.1:5173/' +
+          queryString.stringify({
+            access_token: body.access_token,
+            refresh_token: body.refresh_token
+          }));
+      } else {
+        res.redirect('/#' +
+          queryString.stringify({
+            error: 'invalid_token'
+          }));
+      }
+    });
   }
 });
 
@@ -137,6 +171,7 @@ app.get('/refresh_token', function(req, res) {
 
   var refresh_token = req.query.refresh_token;
   var authOptions = {
+    // --- FIX: Use the REAL Token URL ---
     url: 'https://accounts.spotify.com/api/token',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
@@ -169,23 +204,20 @@ app.get('/api/spotify/me', async (req, res) => {
     }
 
     try {
-        const response = await fetch('https://api.spotify.com/v1/me', { // Assuming this is https://api.spotify.com/v1/me
+        // --- FIX: Use the REAL 'me' API URL ---
+        const response = await fetch('https://api.spotify.com/v1/me', {
             headers: {
                 'Authorization': `Bearer ${access_token}`
             }
         });
 
-        // IMPORTANT: Get the JSON body from the response
         const data = await response.json();
 
-        // Check if the response was NOT okay (e.g., 401, 403, 404)
         if (!response.ok) {
             console.error('Spotify API Error:', data);
-            // Forward Spotify's error status and message to the client
             return res.status(response.status).json(data);
         }
 
-        // Success! Send the data.
         res.json(data);
 
     } catch (error) {
@@ -202,6 +234,7 @@ app.get('/api/spotify/top/tracks', async (req, res) => {
     }
     const { time_range = 'long_term', limit = 5 } = req.query;
     try {
+        // --- FIX: Use the REAL 'top tracks' API URL ---
         const url = `https://api.spotify.com/v1/me/top/tracks?time_range=${time_range}&limit=${limit}`;
 
         const response = await fetch(url, {
@@ -211,7 +244,7 @@ app.get('/api/spotify/top/tracks', async (req, res) => {
         });
         
         const data = await response.json();
-        console.log(data)
+        
         if (!response.ok) {
             console.error('Spotify Top Tracks Error:', data);
             return res.status(response.status).json(data);
@@ -253,7 +286,16 @@ app.post('/api/token', async (req, res) => {
   }
 });
 
+// Helper function
+function generateRandomString(length) {
+  var text = '';
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  for (var i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+};
+
 app.listen(3000, () => {
   console.log("Server running on http://127.0.0.1:3000");
 });
-

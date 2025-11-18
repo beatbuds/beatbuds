@@ -57,7 +57,7 @@ function HomePage() {
     }
 
     try {
-      const res = await fetch('http://127.0.0.1:3000/api/refresh', {
+      const res = await fetch('http://127.0.0.1:3000/refresh_token', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ refresh_token: currentRefreshToken })

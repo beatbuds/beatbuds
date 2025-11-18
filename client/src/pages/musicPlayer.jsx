@@ -53,9 +53,26 @@ function MusicPlayer() {
         },
         body: JSON.stringify({ device_id: deviceId })
       })
-      .then(res => res.json())
-      .then(data => console.log('Playback transferred:', data))
-      .catch(err => console.error("Transfer playback error:", err));
+      // --- FIX 4: Handle the 204 No Content response ---
+      .then(res => {
+        if (res.status === 204) {
+          console.log('Playback transferred successfully.');
+          return; // Success, but no JSON body to parse
+        }
+        if (!res.ok) {
+          // If there's an error, try to parse it as JSON
+          return res.json().then(err => { 
+            throw new Error(err.error || 'Failed to transfer playback') 
+          });
+        }
+        return res.json(); // For any other 2xx response
+      })
+      .then(data => {
+        if (data) { // Only log if data is not undefined
+          console.log('Playback transferred response:', data);
+        }
+      })
+      .catch(err => console.error("Transfer playback error:", err.message));
     }
   }, [deviceId, accessToken]);
 

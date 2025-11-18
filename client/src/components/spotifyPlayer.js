@@ -8,7 +8,6 @@ export function useSpotifyPlayer(accessToken) {
   const [error, setError] = useState(null);
   const playerRef = useRef(null);
 
-  // Load the Spotify SDK script
   useEffect(() => {
     if (!accessToken) return;
 

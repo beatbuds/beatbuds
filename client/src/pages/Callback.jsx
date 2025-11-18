@@ -7,8 +7,6 @@ function CallbackPage() {
 
   useEffect(() => {
     const code = searchParams.get('code');
-
-    // If Spotify sends an error, or no code
     if (!code) {
       navigate('/'); // Go back home
       return;

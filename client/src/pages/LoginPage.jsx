@@ -22,7 +22,6 @@ function LoginPage() {
     'streaming',
     'user-read-playback-state',
     'user-modify-playback-state'
-    // Add any other scopes your "beatbuds" app needs
   ];
 
   //to check if logged in

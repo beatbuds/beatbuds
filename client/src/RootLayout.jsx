@@ -49,7 +49,7 @@ function RootLayout() {
     const currentRefreshToken = localStorage.getItem('spotify_refresh_token');
     if (!currentRefreshToken) return null;
     try {
-      const res = await fetch('http://127.0.0.1:3000/api/refresh', {
+      const res = await fetch('http://127.0.0.1:3000/refresh_token', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ refresh_token: currentRefreshToken })
@@ -153,7 +153,7 @@ function RootLayout() {
     localStorage.removeItem("spotify_access_token");
     localStorage.removeItem("spotify_refresh_token");
     window.dispatchEvent(new Event('authChange')); 
-    // Listeners will handle the state update and navigation
+    
   };
 
   // Don't render layout if we don't have a Supabase session
