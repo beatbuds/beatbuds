@@ -57,6 +57,13 @@ function Nav({ session, spotifyLoggedIn, handleLogout }) {
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" /></svg>
                 <Link to="/Fyp">fyp</Link>
               </li>
+              <li className={currPath === '/UserSearchPage' ? 'active' : ''}>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 -960 960 960" fill="#e3e3e3">
+                  <path d="M480-520q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm0 80q83 0 151.5 42.5T760-320v80H200v-80q48-75 116.5-117.5T480-440Z"/>
+                </svg>
+                <Link to="/UserSearchPage">search users</Link>
+              </li>
+
               <button
                 className="button block"
                 onClick={logOut}>
