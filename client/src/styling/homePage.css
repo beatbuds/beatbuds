@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+}
+
+.user-container {
+    display: flex;  
+    flex-direction: column;
+}
+
+.user-container .top-container {
+    margin-top: 0px;
+    display: flex;  
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+    margin-left: 50px;
+}
+
+
+.user-container .top-user-container h1 {
+    font-size: 80px;
+    font-weight: 900;
+    
+}
+.user-container .top-user-container h2 {
+    font-size: 35px;
+}
+.user-container .top-user-container img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    height: 300px;
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: 100%;
+    margin-right: 50px;
+    border-style: solid;
+    border-color: black;
+    border-width: 6px;
+}
+
+
+/* --- New Outer Container (Positions the entire display) --- */
+.bottom-user-container {
+    position: relative;
+    bottom: 5vh; /* Position it above the bottom */
+    width: auto;
+    z-index: 20;
+    color: var(--text-light);
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center; /* Centers the H2 */
+    margin-left: 25px;
+}
+
+.bottom-user-container h2 {
+    font-family: 'Cormorant', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+.top-tracks-container {
+    /* Remove padding/background here, put it on the grid for better structure */
+    background-color: rgba(40, 41, 42, 0.7);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Tracks Grid: The Horizontal Row --- */
+.tracks-grid {
+    display: grid;
+    /* Create 5 equal columns for the 5 tracks */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* --- Individual Track Column: The Vertical Stack --- */
+.track-column {
+    display: flex;
+    flex-direction: column; /* Stacks children (details and card) vertically */
+    align-items: center; /* Centers items horizontally within the column */
+    text-align: left;
+    height: 100%;
+}
+
+/* Track Details Area (Rank, Name, Artist) */
+.track-details {
+    width: 100%;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    border-left: 3px solid var(--bg-primary);
+}
+
+.track-rank {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+    margin: 0;
+    display: block; /* Ensure it takes its own line */
+}
+.track-name {
+    font-size: 1rem;
+    width: 250px;
+    font-weight: bold;
+    margin: 4px 0 0;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-artists {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Album Cover Card */
+.track-card {
+    position: relative;
+    width: 100%; /* Fill the column width */
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* Prevents the card from shrinking */
+}
+
+.track-card:hover {
+    transform: scale(1.03);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 950px) {
+    .tracks-grid {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (max-width: 600px) {
+    .tracks-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px;
+    }
+    .track-rank {
+        font-size: 1.2rem;
+    }
+    .track-name {
+        font-size: 0.9rem;
+    }
+}

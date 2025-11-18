@@ -1,4 +1,4 @@
-function Fyp() {
+function Fyp({ session, spotifyLoggedIn, handleLogout }) {
     return (
         <>
 

@@ -1,6 +1,6 @@
 import CommunityCard from "../components/communitycard";
 
-function Communities() {
+function Communities({ session, spotifyLoggedIn, handleLogout }) {
     return (
         <>
             <CommunityCard /> 

@@ -18,7 +18,7 @@ function LoginPageSB() {
             supabase.auth.onAuthStateChange((_event, session) => {
             setSesion(session)
             if(session){
-                navigate('/Profile', {state: {sessionData: session}})
+                navigate('/HomePage', {state: {sessionData: session}})
             }
         })
         }, [session, navigate])

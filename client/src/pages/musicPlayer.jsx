@@ -1,6 +1,6 @@
 import '../styling/musicPlayer.css'
 
-function MusicPlayer() {
+function MusicPlayer({ session, spotifyLoggedIn, handleLogout }) {
     return(
     <>
     <div class="player-container">
