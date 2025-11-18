@@ -37,17 +37,18 @@ const TrackColumn = ({ track, index }) => {
 
 function HomePage() {
     const {
-    session,
-    spotifyLoggedIn,
-    user,
-    pfp,
-    email,
-    topTracks,
-    greetingMessage
+      session,
+      spotifyLoggedIn,
+      accessToken,
+      user,
+      pfp,
+      email,
+      topTracks,
+      greetingMessage
   } = useOutletContext();
 
   const navigate = useNavigate(); 
-
+  // console.log(topTracks)
   const refreshToken = async () => {
     const currentRefreshToken = localStorage.getItem('spotify_refresh_token');
     if (!currentRefreshToken) {

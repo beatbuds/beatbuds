@@ -14,7 +14,8 @@ function RootLayout() {
   const [pfp, setPfp] = useState(null);
   const [email, setEmail] = useState(null);
   const [topTracks, setTopTracks] = useState([]);
-  
+  const [accessToken, setAccessToken] = useState(null);
+
   const navigate = useNavigate();
 
   // --- 2. ALL DATA FETCHING LIVES HERE ---
@@ -56,6 +57,7 @@ function RootLayout() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Refresh failed');
       localStorage.setItem('spotify_access_token', data.access_token);
+      setAccessToken(data.access_token)
       if (data.refresh_token) {
         localStorage.setItem('spotify_refresh_token', data.refresh_token);
       }
@@ -64,6 +66,7 @@ function RootLayout() {
       console.error('Refresh failed:', error.message);
       localStorage.removeItem('spotify_access_token');
       localStorage.removeItem('spotify_refresh_token');
+      setAccessToken(null)
       return null;
     }
   };
@@ -88,9 +91,9 @@ function RootLayout() {
     // 2. Spotify Auth Listener
     const handleSpotifyAuth = () => {
       const token = localStorage.getItem("spotify_access_token");
+      setAccessToken(token)
       setSpotifyLoggedIn(!!token);
       if (!token) {
-        // If Spotify logs out, clear the data
         setUser(null);
         setPfp(null);
         setEmail(null);
@@ -130,6 +133,7 @@ function RootLayout() {
 
     const accessToken = localStorage.getItem('spotify_access_token');
     if (accessToken) {
+      setAccessToken(accessToken)
       setSpotifyLoggedIn(true);
       fetchAllSpotifyData(accessToken);
     } else {
@@ -173,6 +177,7 @@ function RootLayout() {
           <Outlet context={{
             session,
             spotifyLoggedIn,
+            accessToken,
             user,
             pfp,
             email,
