@@ -16,6 +16,7 @@ import NotFound from './pages/NotFound.jsx'
 import CreatePost from './pages/createPost.jsx'
 import CallbackPage from './pages/Callback.jsx'
 import LoginPageSB from './pages/LoginPageSB.jsx'
+import UserSearchPage from './pages/UserSearchPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "/Profile", element: <Profile /> },
       { path: "/Settings", element: <Settings /> },
       { path: "/Communities", element: <Communities /> },
+      { path: "/UserSearchPage", element: <UserSearchPage /> },
       {path: "/CreatePost", element: <CreatePost />},
       {path: "*", element: <NotFound />},
       { path: "/Fyp", element: <Fyp /> },

@@ -1,0 +1,43 @@
+.search-form,
+.results{
+    max-width: 90%;
+    padding: 1rem;
+    background-color: var(--bg-dark);
+}
+
+.results{
+    min-height: 100vh;
+}
+
+
+.search-form input{
+    padding: 1rem;
+}
+
+.search-form button{
+    color: var(--bg-dark);
+}
+
+.search-form input,
+.user-card{
+    color: white;
+    background-color: var(--bg-dark);
+    border: 2px solid var(--bg-mid);
+}
+.results{
+    margin-inline: auto;
+}
+
+.user-card{
+    max-width: 100%;
+    padding: 1.5rem;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.user-card img{
+    max-width: 150px;
+    object-fit: cover;
+    border-radius: 100%;
+}
