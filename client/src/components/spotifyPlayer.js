@@ -10,19 +10,14 @@ export function useSpotifyPlayer(accessToken) {
 
   useEffect(() => {
     if (!accessToken) return;
-
-    // Check if SDK is already loaded
     if (window.Spotify) {
       setIsReady(true);
       return;
     }
-
-    // Define the callback for when SDK loads
     window.onSpotifyWebPlaybackSDKReady = () => {
       setIsReady(true);
     };
 
-    // Load the SDK script if not already present
     if (!document.querySelector('script[src="https://sdk.scdn.co/spotify-player.js"]')) {
       const script = document.createElement('script');
       script.src = 'https://sdk.scdn.co/spotify-player.js';
@@ -31,7 +26,6 @@ export function useSpotifyPlayer(accessToken) {
     }
   }, [accessToken]);
 
-  // Initialize the player once SDK is ready
   useEffect(() => {
     if (!isReady || !accessToken) return;
 
@@ -45,7 +39,6 @@ export function useSpotifyPlayer(accessToken) {
       volume: 0.5
     });
 
-    // Error listeners
     player.addListener('initialization_error', ({ message }) => {
       console.error('Initialization Error:', message);
       setError(`Initialization Error: ${message}`);
@@ -65,28 +58,33 @@ export function useSpotifyPlayer(accessToken) {
       console.error('Playback Error:', message);
     });
 
-    // Ready listener
     player.addListener('ready', ({ device_id }) => {
       console.log('Player ready with Device ID:', device_id);
       setDeviceId(device_id);
       setError(null);
+      
+      player.getCurrentState().then(state => {
+        if (state) {
+          console.log('Initial state loaded:', state);
+          setCurrentTrack(state.track_window.current_track);
+          setIsPaused(state.paused);
+        }
+      });
     });
 
-    // Not ready listener
     player.addListener('not_ready', ({ device_id }) => {
       console.log('Device has gone offline:', device_id);
       setDeviceId(null);
     });
 
-    // Player state changed listener
     player.addListener('player_state_changed', state => {
       if (!state) return;
       
+      console.log('State changed:', state);
       setCurrentTrack(state.track_window.current_track);
       setIsPaused(state.paused);
     });
 
-    // Connect the player
     player.connect().then(success => {
       if (success) {
         console.log('Successfully connected to Spotify!');
@@ -97,7 +95,6 @@ export function useSpotifyPlayer(accessToken) {
       }
     });
 
-    // Cleanup on unmount
     return () => {
       console.log('Disconnecting player...');
       if (playerRef.current) {
@@ -138,6 +135,17 @@ export function useSpotifyPlayer(accessToken) {
     }
   }, []);
 
+  const refreshState = useCallback(() => {
+    if (playerRef.current) {
+      playerRef.current.getCurrentState().then(state => {
+        if (state) {
+          setCurrentTrack(state.track_window.current_track);
+          setIsPaused(state.paused);
+        }
+      });
+    }
+  }, []);
+
   return {
     player: playerRef.current,
     deviceId,
@@ -150,7 +158,8 @@ export function useSpotifyPlayer(accessToken) {
       nextTrack,
       previousTrack,
       seek,
-      setVolume
+      setVolume,
+      refreshState
     }
   };
 }

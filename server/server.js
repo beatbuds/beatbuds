@@ -51,8 +51,6 @@ app.put('/api/spotify/transfer', async (req, res) => {
     if (!device_id) {
         return res.status(400).json({ error: 'Missing device_id.' });
     }
-
-    // --- FIX: Use the REAL Spotify Player API URL ---
     const SPOTIFY_TRANSFER_URL = 'https://api.spotify.com/v1/me/player';
 
     try {
