@@ -1,32 +1,68 @@
 import "../styling/createPost.css"
+import { supabase } from '../components/supabaseClient.js'
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-};
 const CreatePost = () => {
+
+  const[title, setTitle] = useState("");
+  const[caption, setCaption] = useState("");
+  const[type, setType] =useState("");
+  const[genre, setGenre] = useState("");
+
+  const navigate = useNavigate();
+
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const { data, error } = await supabase.from("posts").insert([{ title,caption, type, genre}]);
+
+    // Successfully added, navigate to summary page
+    navigate("/Profile");
+  }
+
     return(
         <>
         <form onSubmit={handleSubmit}>
                <h1>Create a Post</h1>
-            <label>Post Caption</label>
+            <label>Song/Album Title</label>
             <input
-            type="text"
+            value ={title}
+            onChange={(e) => setTitle(e.target.value)}
             required>
             </input>
             <br />
             <label>
-            Song:
+            Album or Song:
             </label>
-            <input
-            type="text"
-            required></input>
+             <select
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              required
+              disabled={loading}>
+              <option value="">Select Role</option>
+              <option value="Album">Album</option>
+              <option value="Song">Song</option>
+            </select>
             <br />
             <label>
-                Image:
+                Genre:
             </label>
+            <input
+            value ={genre}
+            onChange= {(e)=> setGenre(e.target.value)}>
+            </input>
+            <br />
+            <label>
+              Description:
+            </label>
+            <input
+            value={caption}>
+              value = {caption}
+              onChange= {(e)=>setCaption(e.target.value)}
+            </input>
 
-              <button>Upload</button>
             <button type="submit">Post</button>
 
         </form>
