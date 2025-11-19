@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from '../components/supabaseClient';
 import '../styling/UserSearchPage.css';
+import {Link} from 'react-router-dom';
 
 function UserSearchPage() {
     const [query, setQuery] = useState('');
@@ -76,7 +77,10 @@ function UserSearchPage() {
                             alt="profile picture"
                             className="avatar"
                             />
-                            <p>Username: {user.name}</p>
+                          <p>
+                            <Link to={`/user/${user.id}`}>{user.name}</Link>
+                            </p>
+
                         </div>
                     </>
                 )}

@@ -135,6 +135,38 @@
     }
 }
 
+.post-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch; /* ensures both children fill height */
+  background-color: var(--bg-mid);
+  border-radius: 70px;
+  width: 400px;
+  height: 200px;
+  border: 5px solid var(--bg-primary);
+  overflow: hidden;
+}
 
+.post-image {
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: center;
+  padding: 0 20px;
+}
 
+.post-image img {
+  height: 160px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
+.post-text {
+     color:var(--text-light);
+}
+
+.post-text a{
+    text-decoration:none;
+    color:var(--text-light);
+    margin-right:30px;
+}
