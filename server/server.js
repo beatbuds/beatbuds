@@ -17,9 +17,10 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://127.0.0.1:5173",
+    origin: "https://beatbuds.onrender.com",
   })
 );
+
 
 app.get("/login", function (req, res) {
   var state = generateRandomString(16);
@@ -160,7 +161,7 @@ app.get("/callback", function (req, res) {
     request.post(authOptions, function (error, response, body) {
       if (!error && response.statusCode === 200) {
         res.redirect(
-          "http://127.0.0.1:5173/" +
+          "https://beatbuds.onrender.com/" +
             queryString.stringify({
               access_token: body.access_token,
               refresh_token: body.refresh_token,
