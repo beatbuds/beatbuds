@@ -15,13 +15,8 @@ const CreatePost = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    const { data, error } = await supabase.from("posts").insert([{ title,caption, type, genre}]);
-
-    // Successfully added, navigate to summary page
-    navigate("/Profile");
-  }
-
+};
+const CreatePost = () => {
     return(
         <>
         <form onSubmit={handleSubmit}>

@@ -18,7 +18,7 @@ function LoginPageSB() {
             supabase.auth.onAuthStateChange((_event, session) => {
             setSesion(session)
             if(session){
-                navigate('/Profile', {state: {sessionData: session}})
+                navigate('/HomePage', {state: {sessionData: session}})
             }
         })
         }, [session, navigate])
@@ -26,7 +26,7 @@ function LoginPageSB() {
     return(
     <>
     <div className="w-full h-screen relative bg-black flex justify-center items-center">
-        <div style={{ width: '100%', height: '100vh',overflow: "hidden" }}>
+        <div style={{ width: '100%', height: '100vh',overflow:"hidden"}}>
             <Aurora
             colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
             blend={3.9}

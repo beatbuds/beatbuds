@@ -6,11 +6,13 @@
   min-height: fit-content;
   justify-content: center;
   gap: 4rem;
+
 }
 
 .left-container,
 .right-container{
   max-width: 800px;
+  
   /* outline: 2px solid red; */
 }
 
@@ -24,10 +26,12 @@
 }
 
 .left-container h1 {
+  font-family: "Cormorant", serif;
   font-size: 4rem;
   margin-bottom: 0;
 }
 .left-container h2 {
+  font-family: "Cormorant", serif;
   font-style: italic;
   font-size: 1rem;
 }
@@ -46,6 +50,7 @@
   flex-grow: 0;
 }
 .right-container .login-welcome > p{
+  font-family: "Cormorant", serif;
     font-size: 40px;
     margin: 0;
 }
@@ -73,6 +78,7 @@
   font-size: 20px;
 }
 .auth-form input {
+  font-family: "Cormorant", serif;
   font-size: 25px;
   border-radius: 15px;
   height: 50px;

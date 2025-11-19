@@ -5,7 +5,6 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import RootLayout from './RootLayout.jsx'
-import App from './App.jsx' // This is your Home Page
 import LoginPage from './pages/LoginPage.jsx'
 import Profile from './pages/Profile.jsx'
 import Settings from './pages/Settings.jsx'
@@ -16,19 +15,22 @@ import NotFound from './pages/NotFound.jsx'
 import CreatePost from './pages/createPost.jsx'
 import CallbackPage from './pages/Callback.jsx'
 import LoginPageSB from './pages/LoginPageSB.jsx'
-
+import HomePage from './pages/HomePage.jsx'
+import UserSearchPage from './pages/UserSearchPage.jsx'
 const router = createBrowserRouter([
   {
     element: <RootLayout />,
     children: [
-      { path: "/", element: <App /> },
       { path: "/MusicPlayer", element: <MusicPlayer /> },
       { path: "/Profile", element: <Profile /> },
       { path: "/Settings", element: <Settings /> },
       { path: "/Communities", element: <Communities /> },
+      { path: "/UserSearchPage", element: <UserSearchPage /> },
       {path: "/CreatePost", element: <CreatePost />},
       {path: "*", element: <NotFound />},
       { path: "/Fyp", element: <Fyp /> },
+      { path: "/HomePage", element: <HomePage /> },
+      { path: "/", element: <HomePage /> },
     ],
   },
   { path: "/LoginPage", element: <LoginPage /> },
