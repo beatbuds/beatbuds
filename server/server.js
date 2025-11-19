@@ -202,8 +202,8 @@ app.get("/refresh_token", function (req, res) {
       var access_token = body.access_token,
         refresh_token = body.refresh_token || refresh_token;
       res.send({
-        'access_token': access_token,
-        'refresh_token': refresh_token,
+        access_token: access_token,
+        refresh_token: refresh_token,
       });
     }
   });
