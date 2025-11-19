@@ -161,7 +161,7 @@ app.get("/callback", function (req, res) {
     request.post(authOptions, function (error, response, body) {
       if (!error && response.statusCode === 200) {
         res.redirect(
-          "https://beatbuds.onrender.com/callback" +
+          "https://beatbuds.onrender.com/" +
             queryString.stringify({
               access_token: body.access_token,
               refresh_token: body.refresh_token,
@@ -202,8 +202,8 @@ app.get("/refresh_token", function (req, res) {
       var access_token = body.access_token,
         refresh_token = body.refresh_token || refresh_token;
       res.send({
-        access_token: access_token,
-        refresh_token: refresh_token,
+        'access_token': access_token,
+        'refresh_token': refresh_token,
       });
     }
   });
