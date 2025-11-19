@@ -105,7 +105,7 @@ function Profile() {
     posts.map((post) => (
       <div key={post.id} className="post-card">
         <div className="post-image">
-          <img src="./public/vinyl.png" alt="vinyl" />
+          <img src="/vinyl.png" alt="vinyl" />
         </div>
         <div className="post-text">
           <h3>
