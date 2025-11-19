@@ -1,18 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-    server: {
+  server: {
     host: "127.0.0.1"
   },
   define: {
-    'process.env': {}, 
-    'process.cwd': '() => "/"',
-        'process': {
-        env: {},
-        cwd: () => '/',
-    },
-  },
+    'process.env': {},
+    'process.cwd': JSON.stringify('/'),
+    'process': {
+      env: {}
+    }
+  }
 })
