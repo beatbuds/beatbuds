@@ -57,7 +57,7 @@ function HomePage() {
     }
 
     try {
-      const res = await fetch('http://127.0.0.1:3000/refresh_token', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/refresh_token`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ refresh_token: currentRefreshToken })

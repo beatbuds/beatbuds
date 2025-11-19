@@ -13,7 +13,7 @@ function CallbackPage() {
     }
 
     // Send the code to our server's /api/token endpoint
-    fetch('http://127.0.0.1:3000/api/token', {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/token`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ code })

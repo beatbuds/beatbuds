@@ -42,7 +42,7 @@ function MusicPlayer() {
     if (deviceId && accessToken) {
       console.log('Transferring playback to device:', deviceId);
       
-      fetch("http://127.0.0.1:3000/api/spotify/transfer", {
+     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/spotify/transfer`, {
         method: "PUT",
         headers: {
           "Authorization": `Bearer ${accessToken}`,
@@ -80,7 +80,7 @@ function MusicPlayer() {
 
     console.log('Playing track:', trackUri);
 
-    fetch('http://127.0.0.1:3000/api/spotify/play', {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/spotify/play`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

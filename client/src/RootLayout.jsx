@@ -32,7 +32,7 @@ function RootLayout() {
   // --- Spotify Data Fetching Functions ---
   const fetchTopTracks = async (accessToken) => {
     try {
-      const response = await fetch('http://127.0.0.1:3000/api/spotify/top/tracks?time_range=long_term&limit=5', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/spotify/top/tracks?time_range=long_term&limit=5`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${accessToken}` }
       });
@@ -49,7 +49,7 @@ function RootLayout() {
     const currentRefreshToken = localStorage.getItem('spotify_refresh_token');
     if (!currentRefreshToken) return null;
     try {
-      const res = await fetch('http://127.0.0.1:3000/refresh_token', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/refresh_token`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ refresh_token: currentRefreshToken })
@@ -107,7 +107,7 @@ function RootLayout() {
       let profileData = null;
       let tracksData = [];
       try {
-        const profileRes = await fetch('http://127.0.0.1:3000/api/spotify/me', {
+        const profileRes = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/spotify/me`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (profileRes.status === 401) {
