@@ -10,7 +10,7 @@ const TrackColumn = ({ track, index }) => {
     const artists = track.artists.map(artist => artist.name).join(', ');
     
     // Get the album cover URL
-    const coverUrl = track.album.images[0]?.url || 'placeholder.png';
+    const coverUrl = track.album.images[0]?.url
 
     return (
         // This is the container for the entire vertical column (Rank, Name, Card)
