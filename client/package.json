@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.83.0",
     "gol": "^0.1.0",
     "ofl": "^1.0.1",
     "ogl": "^1.0.11",
