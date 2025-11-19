@@ -57,7 +57,7 @@ function HomePage() {
     }
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/refresh_token`, {
+      const res = await fetch('https://beatbuds.onrender.com/refresh_token', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ refresh_token: currentRefreshToken })
