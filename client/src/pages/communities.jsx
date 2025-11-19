@@ -1,4 +1,4 @@
-import CommunityCard from "../components/communitycard";
+import CommunityCard from "../components/CommunityCard.jsx";
 
 function Communities({ session, spotifyLoggedIn, handleLogout }) {
     return (

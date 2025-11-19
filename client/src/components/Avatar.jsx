@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { supabase } from './supabaseClient'
-import '../styling/avatar.css';
+import { supabase } from './SupabaseClient'
+import '../styling/Avatar.css';
 
 export default function Avatar({ url, size, onUpload }) {
   const [avatarUrl, setAvatarUrl] = useState(null)

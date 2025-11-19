@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { supabase } from '../components/supabaseClient';
+import { supabase } from '../components/SupabaseClient';
 import '../styling/EditPost.css';
 
 const EditPost = () => {

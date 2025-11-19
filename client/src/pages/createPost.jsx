@@ -1,4 +1,4 @@
-import "../styling/createPost.css";
+import "../styling/CreatePost.css";
 import { supabase } from '../components/supabaseClient.js';
 import { useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';

@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import { supabase } from '../components/supabaseClient.js'
+import { supabase } from '../components/SupabaseClient.js'
 import Auth from '../components/Auth.jsx'
 import Account from '../components/Account.jsx'
 import { useNavigate } from "react-router-dom";

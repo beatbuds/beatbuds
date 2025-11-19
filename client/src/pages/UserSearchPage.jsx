@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { supabase } from '../components/supabaseClient';
+import { supabase } from '../components/SupabaseClient';
 import '../styling/UserSearchPage.css';
 import {Link} from 'react-router-dom';
 

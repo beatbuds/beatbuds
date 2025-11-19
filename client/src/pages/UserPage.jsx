@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { supabase } from '../components/supabaseClient';
-import '../styling/profile.css';
+import { supabase } from '../components/SupabaseClient';
+import '../styling/Profile.css';
 
 function UserPage() {
   const { id } = useParams();

@@ -2,7 +2,7 @@
 import React from 'react'; // Import React
 import logo from '../assets/bb.svg'
 import { Link, useLocation } from 'react-router-dom'
-import '../styling/nav.css'
+import '../styling/Nav.css'
 
 // Notice this is now a simple function that receives props
 function Nav({ session, spotifyLoggedIn, handleLogout }) {

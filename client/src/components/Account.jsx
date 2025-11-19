@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { supabase } from './supabaseClient.js'
+import { supabase } from './SupabaseClient.js'
 import Avatar from './Avatar.jsx'
-import '../styling/account.css'
+import '../styling/Account.css'
 import { useNavigate } from 'react-router-dom'
 
 // onProfileLoaded passes the profile data to a callback function

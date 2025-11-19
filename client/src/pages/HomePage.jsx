@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Aurora from '../Aurora.jsx';
-import '../styling/page-layout.css';
-import '../styling/homePage.css';
+import '../styling/PageLayout.css';
+import '../styling/HomePage.css';
 import { useOutletContext } from "react-router-dom";
 
 const TrackColumn = ({ track, index }) => {

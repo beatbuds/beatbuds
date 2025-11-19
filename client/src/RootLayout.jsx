@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { supabase } from "./components/supabaseClient.js";
+import { supabase } from "./components/SupabaseClient.js";
 import Nav from './components/Nav.jsx';
-import './styling/page-layout.css';
+import './styling/PageLayout.css';
 function RootLayout() {
   // --- 1. ALL STATE LIVES HERE ---
   const [session, setSession] = useState(null);

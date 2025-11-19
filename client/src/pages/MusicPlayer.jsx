@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import { useSpotifyPlayer } from '../components/spotifyPlayer.js';
+import { useSpotifyPlayer } from '../components/SpotifyPlayer.js';
 import '../styling/MusicPlayer.css'; 
 
 const PlayIcon = () => (

@@ -1,4 +1,4 @@
-import '../styling/communitycard.css';
+import '../styling/CommunityCard.css';
 
 function CommunityCard(){
     return (

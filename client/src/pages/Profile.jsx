@@ -1,6 +1,6 @@
-import "../styling/profile.css"
+import "../styling/Profile.css"
 import { useState, useEffect } from 'react' // Import useState and useEffect
-import { supabase } from '../components/supabaseClient.js'
+import { supabase } from '../components/SupabaseClient.js'
 import Account from "../components/Account.jsx";
 import { useNavigate, Link } from "react-router-dom"; // Import useNavigate
 

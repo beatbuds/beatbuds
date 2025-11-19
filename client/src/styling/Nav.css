@@ -1,0 +1,98 @@
+:root {
+  --bg-dark: #121212;
+  --bg-mid: #28292a;
+  --text-light: #edede9;
+  --text-dark: #3a3b3c;
+  --bg-primary: #87d78b;
+  --hover-clr: #2f2f2f;
+}
+
+.nav {
+  box-sizing: border-box;
+  height: 100vh;
+  width: 250px;
+  padding: 5px 1em;
+  background-color: var(--bg-dark);
+  border-right: 1px solid var(--bg-mid);
+  position: fixed;
+  top: 0;
+  display: flex; 
+  flex-direction: column;
+  z-index: 30;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0; 
+  margin: 0; 
+  width: 100%;
+}
+
+.nav ul li {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+  font-family: "Cormorant", serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0.75em 0.5em; 
+  color: var(--text-light);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+
+
+.nav ul li svg {
+  min-width: 24px; 
+}
+
+.nav ul li a {
+  flex-grow: 1; 
+  text-decoration: none;
+  color: inherit; 
+}
+
+.nav ul li .logo-icon {
+  height: 50px;
+  flex-grow: 0;
+}
+
+.nav ul li:hover {
+  background-color: var(--hover-clr);
+  border-radius: 10px;
+}
+
+.nav ul li.active {
+  background-color: var(--bg-mid); /* Highlight active item slightly */
+  border-radius: 10px;
+}
+
+
+.nav ul li:first-child {
+  background-color: transparent;
+  padding: 1.5em 0.5em;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.nav ul li:first-child:hover {
+  background-color:  var(--hover-clr);
+}
+
+
+.nav ul button { 
+   font-family: "Cormorant", serif; 
+  font-weight: bold;
+  font-size: 1.2rem;
+  right:0;
+  width: auto;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--bg-primary); 
+  color: var(--text-dark); 
+  border-radius: 30px;
+  margin-top: 10px;
+  text-align: center;
+}

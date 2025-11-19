@@ -1,8 +1,8 @@
 import Account from "../components/Account.jsx";
 import { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase} from '../components/supabaseClient.js'
-import '../styling/settings.css'
+import { supabase} from '../components/SupabaseClient.js'
+import '../styling/Settings.css'
 
 function Settings() {
     const [session, setSession] = useState(null)
