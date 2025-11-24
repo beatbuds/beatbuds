@@ -14,6 +14,7 @@ import Particles from './Particles.jsx';
 function LoginPage() {
   const SPOTIFY_CLIENT_ID =import.meta.env.VITE_CLIENT_ID;
   const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI;
+  console.log("LOGIN PAGE DEBUG: REDIRECT_URI:", REDIRECT_URI);
   const SCOPES = [
     'user-read-private',
     'user-read-email',
