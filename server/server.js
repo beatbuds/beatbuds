@@ -92,7 +92,6 @@ app.put('/api/spotify/play', async (req, res) => {
         return res.status(400).json({ error: 'Missing device_id or track_uri.' });
     }
 
-    // --- FIX: Use the REAL Play URL and pass device_id as a query param ---
     const SPOTIFY_PLAY_URL = `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`;
 
     try {
@@ -120,8 +119,6 @@ app.put('/api/spotify/play', async (req, res) => {
         res.status(500).json({ error: 'Failed to communicate with Spotify Player API.' });
     }
 });
-
-
 
 app.get('/callback', function(req, res) {
 
