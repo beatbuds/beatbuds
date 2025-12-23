@@ -3,6 +3,8 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 import { useSpotifyPlayer } from '../components/spotifyPlayer.js';
 import '../styling/MusicPlayer.css'; 
 import '../components/helper.js'
+import dogDance from './dogDance.gif'
+
 
 const PlayIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" height="72px" viewBox="0 -960 960 960" width="72px" fill="#e3e3e3">
@@ -169,6 +171,9 @@ function MusicPlayer() {
           </div>
         </div>
       </div>
+      {/* <div class="dog-container">
+        <img src={dogDance} alt='dog'></img>
+      </div> */}
     </div>
   );
 }

@@ -70,7 +70,7 @@
 } */
  .now-playing-name {
   margin-left: 40px;
-  max-width: 650px;
+  max-width: 350px;
   font-size: 1.2rem;
   font-weight: bold;
   white-space: nowrap;
@@ -79,8 +79,7 @@
 }
 .now-playing-artist {
   font-size: 1.0rem;
-    margin-left: 40px;
-
+  margin-left: 40px;
   opacity: 0.8;
   white-space: nowrap;
   overflow: hidden;
@@ -93,10 +92,11 @@
 .music-control-container {
   margin-left: 40px;
   display: flex;
+  position: sticky;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   padding-top: 40px;
 }
 .control-button {
