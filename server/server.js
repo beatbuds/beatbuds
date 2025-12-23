@@ -5,8 +5,6 @@ import dotenv from 'dotenv';
 import queryString from 'query-string'
 
 dotenv.config();
-
-// --- FIX: Use the REAL Spotify Token URL ---
 const TOKEN_URL = "https://accounts.spotify.com/api/token";
 
 var CLIENT_ID=process.env.VITE_CLIENT_ID;
@@ -166,7 +164,6 @@ app.get('/refresh_token', function(req, res) {
 
   var refresh_token = req.query.refresh_token;
   var authOptions = {
-    // --- FIX: Use the REAL Token URL ---
     url: 'https://accounts.spotify.com/api/token',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
@@ -199,7 +196,6 @@ app.get('/api/spotify/me', async (req, res) => {
     }
 
     try {
-        // --- FIX: Use the REAL 'me' API URL ---
         const response = await fetch('https://api.spotify.com/v1/me', {
             headers: {
                 'Authorization': `Bearer ${access_token}`
@@ -229,7 +225,6 @@ app.get('/api/spotify/top/tracks', async (req, res) => {
     }
     const { time_range = 'long_term', limit = 5 } = req.query;
     try {
-        // --- FIX: Use the REAL 'top tracks' API URL ---
         const url = `https://api.spotify.com/v1/me/top/tracks?time_range=${time_range}&limit=${limit}`;
 
         const response = await fetch(url, {
@@ -281,7 +276,6 @@ app.post('/api/token', async (req, res) => {
   }
 });
 
-// Helper function
 function generateRandomString(length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

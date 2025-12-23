@@ -31,7 +31,7 @@
   grid-template-columns: 1fr 1fr;
   height: auto;
   width: 100%;
-  max-width: 800px;
+  max-width: 700px;
   margin: 5em auto;
   padding: 3rem;
   background-color: #1d1f20;
@@ -65,30 +65,39 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
-.now-playing-info {
-  overflow: hidden;
-  max-width: 200px;
-}
-.now-playing-name {
+/* .now-playing-info {
+  overflow: auto;
+} */
+ .now-playing-name {
+  margin-left: 40px;
+  max-width: 650px;
   font-size: 1.2rem;
   font-weight: bold;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-x:hidden;
+  text-overflow:clip;
 }
 .now-playing-artist {
-  font-size: 0.9rem;
+  font-size: 1.0rem;
+    margin-left: 40px;
+
   opacity: 0.8;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.now-playing-artist:hover{
+  cursor:default;
+}
+
 .music-control-container {
+  margin-left: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
   margin-bottom: 2rem;
+  padding-top: 40px;
 }
 .control-button {
   background-color:transparent;
@@ -102,7 +111,7 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 5px rgba(0,0,0,0.3);
 }
 .control-button.large {
     width: 100px;
@@ -110,7 +119,8 @@
 }
 .control-button:hover:not([disabled]) {
   transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(234, 255, 241, 0.5);
+  box-shadow: 3 4px 5px rgba(234, 255, 241, 0.5);
+  background-color: rgba(234, 255, 241, .3);
 }
 .control-button:disabled {
     opacity: 0.5;
