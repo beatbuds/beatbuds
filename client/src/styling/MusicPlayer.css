@@ -4,10 +4,8 @@
   --bg-mid: #28292a;
   --text-light: #edede9;
   --text-dark: #3a3b3c;
-  --bg-primary: #1ed760;
   --hover-clr: #2f2f2f;
 }
-
 .general-container {
   position: relative;
   overflow: hidden;
@@ -50,8 +48,6 @@
   color: var(--bg-primary);
   margin-bottom: 2rem;
 }
-
-/* --- Album/Now Playing Display --- */
 .album-container {
   display: flex;
   align-items: center;
@@ -71,6 +67,7 @@
 
 .now-playing-info {
   overflow: hidden;
+  max-width: 200px;
 }
 .now-playing-name {
   font-size: 1.2rem;
@@ -86,8 +83,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-/* --- Player Controls --- */
 .music-control-container {
   display: flex;
   justify-content: center;
@@ -115,7 +110,7 @@
 }
 .control-button:hover:not([disabled]) {
   transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(234, 255, 241, 0.5); /* Green shadow on hover */
+  box-shadow: 0 4px 10px rgba(234, 255, 241, 0.5);
 }
 .control-button:disabled {
     opacity: 0.5;
@@ -131,8 +126,6 @@
     width: 55px;
     height: 55px;
 }
-
-/* --- Track List --- */
 .track-list {
     margin-top: 2rem;
 }
