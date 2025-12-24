@@ -21,9 +21,9 @@ export default function Auth() {
   }
 
   return (
-    <div className="flex login-page">
+    <div className="login-page">
       {/* Banner */}
-      <div className="login-banner">
+      {/* <div className="login-banner">
         <div className="flex">
           <img
             src="https://images.unsplash.com/photo-1688658054075-9785303491bc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687"
@@ -31,13 +31,13 @@ export default function Auth() {
           />
         </div>
         <p className="">Explore music community everywhere!</p>
-      </div>
+      </div> */}
 
       {/* Login Form */}
       <form class="auth-form" onSubmit={handleLogin}>
-        <div className="flex login-welcome">
+        {/* <div className="flex login-welcome">
           <p>Welcome Back!</p>
-        </div>
+        </div> */}
         
         <label htmlFor="email">E-Mail</label>
         <input

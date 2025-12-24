@@ -35,7 +35,7 @@
   margin: 5em auto;
   padding: 3rem;
   background-color: #1d1f20;
-  border-radius: 12px;
+  border-radius: 40px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.5);
   color: var(--text-light);
   z-index:30;
@@ -56,29 +56,50 @@
   z-index:2;
 }
 
+.now-playing-info {
+  overflow:hidden;
+  white-space: nowrap;
+  position: relative;
+  
+}
 .now-playing-cover {
-  width: 300px;
   height: 300px;
-  border-radius: 8px;
+  border-radius: 90px;
   object-fit: cover;
   flex-shrink: 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
-/* .now-playing-info {
-  overflow: auto;
-} */
- .now-playing-name {
-  margin-left: 40px;
-  max-width: 350px;
-  font-size: 1.2rem;
-  font-weight: bold;
+.scroll-container {
+  max-width: 300px;
+  overflow: hidden;
   white-space: nowrap;
-  overflow-x:hidden;
-  text-overflow:clip;
+  margin-left:40px;
 }
+
+.scroll-text {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: bold;
+  will-change: transform;
+}
+
+.scroll-text.Animate {
+  mask-image: linear-gradient(to left, transparent, black 30%, black 90%, transparent);
+  animation: scroll-text 10s linear infinite;
+}
+
+@keyframes scroll-text {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.spacer {
+  display: inline-block;
+  width: 20px;
+}
+
 .now-playing-artist {
-  font-size: 1.0rem;
+  font-size: 1.2rem;
   margin-left: 40px;
   opacity: 0.8;
   white-space: nowrap;
@@ -90,15 +111,15 @@
 }
 
 .music-control-container {
-  margin-left: 40px;
   display: flex;
   position: sticky;
-  justify-content: center;
   align-items: center;
   gap: 15px;
+  margin-left:40px;
   margin-bottom: 2.5rem;
   padding-top: 40px;
 }
+
 .control-button {
   background-color:transparent;
   color: var(--bg-dark);

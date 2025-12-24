@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import Aurora from '../Aurora.jsx';
+import FloatingLines from '../FloatingLines.jsx';
 import '../styling/page-layout.css';
 import '../styling/homePage.css';
 import { useOutletContext } from "react-router-dom";
@@ -91,7 +91,7 @@ function HomePage() {
     <>
       <div className='w-full h-screen relative bg-black flex justify-center items-center'>
         <div style={{ width: '100%', height: '100%', position: "fixed" }}>
-          <Aurora
+          <FloatingLines
             colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
             blend={3.9}
             amplitude={.75}

@@ -4,7 +4,7 @@ import { useSpotifyPlayer } from '../components/spotifyPlayer.js';
 import '../styling/MusicPlayer.css'; 
 import '../components/helper.js'
 import dogDance from './dogDance.gif'
-
+import Animate from '../components/Animate.jsx'
 
 const PlayIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" height="72px" viewBox="0 -960 960 960" width="72px" fill="#e3e3e3">
@@ -141,34 +141,34 @@ function MusicPlayer() {
               className="now-playing-cover"
             />
             <div className="now-playing-info">
-              <div className="now-playing-name">{currentSongName}</div>
+              <Animate currentSongName={currentSongName}/> 
               <div className="now-playing-artist">{currentArtistNames}</div>
               <div className="music-control-container">
-              <button 
-                className="control-button" 
-                onClick={controls.previousTrack} 
-                disabled={!isReady}
-              >
-                <PreviousIcon />
-              </button>
-              
-              <button 
-                className="control-button large" 
-                onClick={controls.togglePlay} 
-                disabled={!isReady}
-              >
-                {isPaused ? <PlayIcon /> : <PauseIcon />}
-              </button>
-              
-              <button 
-                className="control-button" 
-                onClick={controls.nextTrack} 
-                disabled={!isReady}
-              >
-                <NextIcon />
-              </button>
+                <button 
+                  className="control-button" 
+                  onClick={controls.previousTrack} 
+                  disabled={!isReady}
+                >
+                  <PreviousIcon />
+                </button>
+                
+                <button 
+                  className="control-button large" 
+                  onClick={controls.togglePlay} 
+                  disabled={!isReady}
+                >
+                  {isPaused ? <PlayIcon /> : <PauseIcon />}
+                </button>
+                
+                <button 
+                  className="control-button" 
+                  onClick={controls.nextTrack} 
+                  disabled={!isReady}
+                >
+                  <NextIcon />
+                </button>
+              </div>
             </div>
-          </div>
         </div>
       </div>
       {/* <div class="dog-container">
