@@ -59,7 +59,7 @@ body {
 }
 
 .bottom-user-container h2 {
-    font-family: 'Cormorant', serif;
+    /* font-family: 'Cormorant', serif; */
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
     color: white;

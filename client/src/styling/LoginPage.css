@@ -88,7 +88,7 @@
     top: 50%;   
     left: 50%;
     transform: translate(-50%, -50%); 
-    font-family: "Cormorant", serif; 
+    /* font-family: "Cormorant", serif;  */
     font-weight: bold;
     font-size: 1.2rem;
     width: auto;

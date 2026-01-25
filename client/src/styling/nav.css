@@ -32,7 +32,7 @@
   display: flex;
   align-items: center;
   gap: 12px; 
-  font-family: "Cormorant", serif;
+  /* font-family: "Cormorant", serif; */
   font-weight: bold;
   font-size: 1.2rem;
   padding: 0.75em 0.5em; 
@@ -82,7 +82,7 @@
 
 
 .nav ul button { 
-   font-family: "Cormorant", serif; 
+  /* font-family: "Cormorant", serif;  */
   font-weight: bold;
   font-size: 1.2rem;
   right:0;

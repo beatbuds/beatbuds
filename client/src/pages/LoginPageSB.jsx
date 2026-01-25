@@ -5,7 +5,6 @@ import Account from '../components/Account.jsx'
 import { useNavigate } from "react-router-dom";
 import "../styling/LoginPageSB.css";
 import logo from '../assets/bb.svg'
-// import "../index.css"
 import FloatingLines from '../FloatingLines.jsx'
 
 function LoginPageSB() {
@@ -29,9 +28,7 @@ function LoginPageSB() {
         <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
         <FloatingLines 
             enabledWaves={['top', 'middle', 'bottom']}
-            // Array - specify line count per wave; Number - same count for all waves
             lineCount={[10, 15, 20]}
-            // Array - specify line distance per wave; Number - same distance for all waves
             lineDistance={[8, 6, 4]}
             bendRadius={5.0}
             bendStrength={-0.5}
@@ -40,17 +37,17 @@ function LoginPageSB() {
         />
         </div>
         <div className="container"style={{ position: "absolute", width:"100%"}}>
-            <div class="left-general">
                 <div className="left-container">
-                    <img src={logo} alt="bb-logo" className="logo-icon" />
-                    <div class="bottom-left">
+                    <div className="corpo-placement">
+                        <div className="blur"></div>
+                        <img src={logo} alt="bb-logo" className="logo-icon" />
                         <h1>beatbuds</h1>
                         <h2>for music-lovers, by music-lovers</h2>
                     </div>
                 </div>
-            </div>
         
             <div className="right-container">
+                <div className="blur"></div>
                 {!session ? <Auth /> : <Account key={session.user.id} session={session} />}
             </div>
         </div>

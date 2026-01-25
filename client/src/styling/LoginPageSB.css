@@ -1,16 +1,65 @@
 .container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  margin: 0;
+  grid-template-columns: 1fr auto;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 .left-container {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.right-container{
+.left-container .corpo-placement .blur {
+  backdrop-filter: blur(8px);
+  -webkit-filter: blur(5px);
+  position: absolute; 
+  z-index:-1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 80px;
+  border: 1px solid;
+  box-shadow: inset 0 4.2px 1px;
 }
-.right-container .login-page .auth-form {
+
+.left-container .corpo-placement {
+  display:flex;
+  flex-direction:column;
+  z-index: 2;
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  padding: 45px;
+  text-align: center; 
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.corpo-placement .logo-icon {
+  display: flex;
+  height: 15.2rem;
+  width: auto;
   margin: 0;
-  height: 100vh;
+}
+
+.corpo-placement h1 {
+  font-size: auto;
+}
+
+.corpo-placement h2 {
+  font-size: auto;
+}
+
+
+.right-container {
+  display: flex;
+  align-items: center;
+}
+
+.right-container .login-page .auth-form {
+  display: inline-block;
+  margin: 50px;
+  width: 100vw;
 }

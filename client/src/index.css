@@ -5,6 +5,7 @@
   --text-dark: #3a3b3c;
   --bg-primary: #87d78b;
   --text-mid: rgb(181, 181, 181);
+  
 }
 /* *{
   margin: 0;
@@ -16,8 +17,9 @@
 body{
   /* Cormorant font has variable weight, but Jacques only has a single, static font weight.
   Both fonts look similar. */
-  font-family: "Cormorant", serif;
+  /* font-family: "Cormorant", serif; */
   font-size: 16px;
+  font-family: "IBM Plex Mono", monospace;
   background-color: var(--bg-dark);
   color: var(--text-light);
   /* background: linear-gradient(90deg, #1e1e1e 10%, #212121 90%, #282828 100%); */
@@ -42,7 +44,7 @@ label,
 button{
   display: block;
   cursor: pointer;
-  font-family: "Cormorant", serif;
+  /* font-family: "Cormorant", serif; */
 }
 
 button, input{
