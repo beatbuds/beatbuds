@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { supabase } from './supabaseClient.js'
-// import '../styling/LoginPageSB.css' 
+import '../styling/LoginPageSB.css' 
 
 export default function Auth() {
   const [loading, setLoading] = useState(false)
@@ -35,16 +35,13 @@ export default function Auth() {
 
       {/* Login Form */}
       <form class="auth-form" onSubmit={handleLogin}>
-        {/* <div className="flex login-welcome">
-          <p>Welcome Back!</p>
-        </div> */}
-        
+        <div className="blur"></div>
         <label htmlFor="email">E-Mail</label>
         <input
           type="email"
           name="email"
           id="email"
-          placeholder="jane@gmail.com"
+          placeholder="your@mail.com"
           className="dark-bg"
           value={email}
           required={true}
