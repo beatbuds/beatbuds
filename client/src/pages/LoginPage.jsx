@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import "../styling/LoginPage.css";
 import "../index.css"
 import { useLocation } from "react-router-dom";
-
+import Nav from "../components/Nav.jsx";
 import Particles from './Particles.jsx';
 
 
@@ -30,7 +30,7 @@ function LoginPage() {
   const currPath = location.pathname;
 
   const [isLoggedIn, setIsLoggedIn] = useState(
-      !!localStorage.getItem("spotify_access_token") 
+      localStorage.getItem("spotify_access_token") 
   );
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function LoginPage() {
     {!isLoggedIn ? (
       <>
       <div className='w-full h-screen relative bg-black'>         
-        <div style={{ width: '100%', height: '100%', position: 'fixed', top: 0, left: 0 }}>
+        <div style={{ width: '100vw', height: '100%', position: 'fixed', top: 0, left: 0 }}>
             <Particles
             />
         </div>

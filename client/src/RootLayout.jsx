@@ -23,16 +23,23 @@ function RootLayout() {
   // --- Greeting Logic ---
   const getGreeting = () => {
     const hour = new Date().getHours();
-    if (hour >= 5 && hour < 12) return "Good morning";
-    if (hour >= 12 && hour < 18) return "Good afternoon";
-    return "Good evening";
+    if (hour >= 5 && hour < 12) return "good morning";
+    if (hour >= 12 && hour < 18) return "good afternoon";
+    return "good evening";
   };
-  const greetingMessage = getGreeting();
+  const retEmoticon = () => {
+    let emoticonList = ["(●'◡'●)","\\(￣︶￣*\\))","(づ￣ 3￣)づ","（＾∀＾●）ﾉｼ","ヾ(＠⌒ー⌒＠)ノ","(〜￣▽￣)〜"];
+    let randomEmote = Math.floor(Math.random() * emoticonList.length);
+    return emoticonList[randomEmote];
+  };
 
-  // --- Spotify Data Fetching Functions ---
+  const greetingMessage = getGreeting();
+  const emote = retEmoticon();
+
+  //get top 5 tracks 
   const fetchTopTracks = async (accessToken) => {
     try {
-      const response = await fetch('http://127.0.0.1:3000/api/spotify/top/tracks?time_range=long_term&limit=5', {
+      const response = await fetch('http://127.0.0.1:3000/api/spotify/top/tracks?time_range=long_term&limit=4', {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${accessToken}` }
       });
@@ -71,9 +78,8 @@ function RootLayout() {
     }
   };
 
-  // --- Main useEffect for ALL data ---
   useEffect(() => {
-    // 1. Supabase Auth
+    //supabase auth
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (!session) {
@@ -88,7 +94,7 @@ function RootLayout() {
       }
     });
 
-    // 2. Spotify Auth Listener
+    //spotify auth listen
     const handleSpotifyAuth = () => {
       const token = localStorage.getItem("spotify_access_token");
       setAccessToken(token)
@@ -102,7 +108,7 @@ function RootLayout() {
     };
     window.addEventListener('authChange', handleSpotifyAuth);
 
-    // 3. Spotify Data Fetching
+    //fetch data from spotify
     const fetchAllSpotifyData = async (token) => {
       let profileData = null;
       let tracksData = [];
@@ -112,13 +118,13 @@ function RootLayout() {
         });
         if (profileRes.status === 401) {
           const newAccessToken = await refreshToken();
-          if (newAccessToken) fetchAllSpotifyData(newAccessToken); // Retry
+          if (newAccessToken) fetchAllSpotifyData(newAccessToken); //try again
           return;
         }
         if (!profileRes.ok) throw new Error('Failed to fetch user data');
         
         profileData = await profileRes.json();
-        tracksData = await fetchTopTracks(token); // Fetch tracks
+        tracksData = await fetchTopTracks(token); //get top 5 tracls
 
         // Set all Spotify state
         if (profileData.display_name) setUser(profileData.display_name);
@@ -147,7 +153,7 @@ function RootLayout() {
     };
   }, [navigate]); // navigate is a dependency
 
-  // --- Logout Function ---
+// logout
   const handleLogout = async () => {
     await supabase.auth.signOut();
     localStorage.removeItem("spotify_access_token");
@@ -156,17 +162,14 @@ function RootLayout() {
     
   };
 
-  // Don't render layout if we don't have a Supabase session
   if (!session) {
     return <div>Loading session...</div>;
   }
 
-  // --- 3. RENDER & PASS CONTEXT ---
   return (
     <>
       <div className="page-layout">
         <div className="nav-layout">
-          {/* Nav just gets props normally */}
           <Nav
             session={session}
             spotifyLoggedIn={spotifyLoggedIn}
@@ -182,7 +185,8 @@ function RootLayout() {
             pfp,
             email,
             topTracks,
-            greetingMessage
+            greetingMessage, 
+            emote
           }} />
         </div>
       </div>

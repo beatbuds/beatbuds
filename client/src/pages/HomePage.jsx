@@ -44,7 +44,8 @@ function HomePage() {
       pfp,
       email,
       topTracks,
-      greetingMessage
+      greetingMessage, 
+      emote
   } = useOutletContext();
 
   const navigate = useNavigate(); 
@@ -103,7 +104,7 @@ function HomePage() {
             {user ? (
               <>
               <img src={pfp} id="ppf-container" alt="Profile"/>
-              <h1>{greetingMessage}, {user}!</h1>
+              <h1>{greetingMessage}, {user}! {emote}</h1>
               </>
             ) : (
               <>
@@ -118,7 +119,7 @@ function HomePage() {
           </div>
           {spotifyLoggedIn && (
           <div className="bottom-user-container">
-            <h2>Your Top 5 Tracks <i>(of all time!)</i></h2> 
+            <h2>-- your top 4 tracks --</h2> 
             <div className="top-tracks-container">
                 <div className="tracks-grid">
                     {topTracks.map((track, index) => (

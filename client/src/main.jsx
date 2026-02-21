@@ -31,9 +31,9 @@ const router = createBrowserRouter([
       { path: "/Fyp", element: <Fyp /> },
       { path: "/HomePage", element: <HomePage /> },
       { path: "/", element: <HomePage /> },
+      { path: "/LoginPage", element: <LoginPage /> },
     ],
   },
-  { path: "/LoginPage", element: <LoginPage /> },
   { path: "/LoginPageSB", element: <LoginPageSB /> },
   { path: "/callback", element: <CallbackPage /> },
 ]);
