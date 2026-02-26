@@ -62,7 +62,7 @@ function LoginPage() {
     <>
     {!isLoggedIn ? (
       <>
-      <div className='w-full h-screen relative bg-black'>         
+      <div className='w-full h-screen relative bg-black center'>         
         <div style={{ width: '100vw', height: '100%', position: 'fixed', top: 0, left: 0 }}>
             <Particles
             />

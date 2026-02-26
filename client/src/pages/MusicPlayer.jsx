@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { useSpotifyPlayer } from '../components/spotifyPlayer.js';
 import '../styling/MusicPlayer.css'; 
 import '../components/helper.js'
-import dogDance from './dogDance.gif'
 import Animate from '../components/Animate.jsx'
+import { Button, FormControl, Container } from 'react-bootstrap'
 
 const PlayIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" height="72px" viewBox="0 -960 960 960" width="72px" fill="#e3e3e3">
@@ -131,6 +131,9 @@ function MusicPlayer() {
   const currentSongName = currentTrack?.name || 'Nothing Playing';
   const currentArtistNames = currentTrack?.artists.map(a => a.name).join(', ') || 'Select a track below';
 
+  const [searchInput,setSearchInput] = useState("");
+
+
   return (
     <div className="general-container" style={{'--album-cover': `url(${currentAlbumCover})`}}>
       <div className="player-container">
@@ -171,9 +174,21 @@ function MusicPlayer() {
             </div>
         </div>
       </div>
-      {/* <div class="dog-container">
-        <img src={dogDance} alt='dog'></img>
-      </div> */}
+      <div className="search-container">
+        <FormControl 
+          placeholder="search for a new jam"
+          type="input"
+          onChange={event =>setSearchInput(event.target.value)}
+          onKeyDown={(e)=> {
+            if (e.key == "Enter") {
+              console.log("enter pressed");
+            }
+          }}
+        />
+        <Button onClick={event=> { console.log("search song")}}>
+          Search
+        </Button>
+      </div>
     </div>
   );
 }
