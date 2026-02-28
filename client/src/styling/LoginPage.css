@@ -1,98 +1,22 @@
-/* .login-page{
-    max-width: 1500px;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    margin-top: 32px;
-    gap: 1rem;
-    align-items: center;
-    padding: 1.4rem;
-}
-
-.login-page h1{
-    font-size: 2.5rem;
-}
-
-.login-banner{
-    flex-grow: 1;
-}
-
-/* Banner image wrapper for sizing control */
-/* .login-banner > div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-    overflow: hidden;
-    width: 100%;
-    margin-bottom: 1rem;
-    border-radius: 2rem;
-}
-
-.login-banner > p{
-    background-color: var(--bg-mid);
-    max-width: 300px;
-    padding: 10px;
-} */
-
-/* Image fills div wrapper for more sizing control */
-/* .login-banner > div > img{
-    width: 100%;
-}
-
-.login-widget{
-    flex-grow: 4;
-}
-
-.login-widget label{
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.login-widget input{
-    padding: 1rem;
-    width: 100%;
-    border-radius: 0.2rem;
-
-    border: 1px solid #4e4e4e;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.login-form button{
-    margin-top: 2rem;
-    padding: 1rem 2.5rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    background-color: var(--bg-primary);
-    border-radius: 0.2rem;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.login-welcome{
-    margin-top: 2rem;
-    justify-content: space-between;
-}  */
 
 .main-content {
-    background-color: black;
 }
 .button-container {
-    position:fixed;
+    /* position:fixed;
     height: 100%; 
-    width: 100%; 
+    width: 100%;  */
     z-index: 20;
 }
 
 .button-container button { 
-    position: absolute;
+    position: fixed;
     top: 50%;   
     left: 50%;
     transform: translate(-50%, -50%); 
-    font-family: "Cormorant", serif; 
+    /* font-family: "Cormorant", serif;  */
     font-weight: bold;
     font-size: 1.2rem;
     width: auto;
-    padding: 12px;
     border: none;
     cursor: pointer;
     background-color: #1ED760; 

@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import { useSpotifyPlayer } from '../components/SpotifyPlayer.js';
+import { useSpotifyPlayer } from '../components/spotifyPlayer.js';
 import '../styling/MusicPlayer.css'; 
+import '../components/helper.js'
+import Animate from '../components/Animate.jsx'
+import { Button, FormControl, Container } from 'react-bootstrap'
 
 const PlayIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" height="72px" viewBox="0 -960 960 960" width="72px" fill="#e3e3e3">
@@ -42,7 +45,7 @@ function MusicPlayer() {
     if (deviceId && accessToken) {
       console.log('Transferring playback to device:', deviceId);
       
-     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/spotify/transfer`, {
+      fetch("http://127.0.0.1:3000/api/spotify/transfer", {
         method: "PUT",
         headers: {
           "Authorization": `Bearer ${accessToken}`,
@@ -80,7 +83,7 @@ function MusicPlayer() {
 
     console.log('Playing track:', trackUri);
 
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/spotify/play`, {
+    fetch('http://127.0.0.1:3000/api/spotify/play', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -128,48 +131,65 @@ function MusicPlayer() {
   const currentSongName = currentTrack?.name || 'Nothing Playing';
   const currentArtistNames = currentTrack?.artists.map(a => a.name).join(', ') || 'Select a track below';
 
+  const [searchInput,setSearchInput] = useState("");
+
+
   return (
     <div className="general-container" style={{'--album-cover': `url(${currentAlbumCover})`}}>
       <div className="player-container">
-        <div className="album-container">
-          <img 
-            src={currentAlbumCover} 
-            alt="Current Album Cover" 
-            className="now-playing-cover"
-          />
-          <div className="now-playing-info">
-            <div className="now-playing-name">{currentSongName}</div>
-            <div className="now-playing-artist">{currentArtistNames}</div>
-          </div>
-        </div>
-
-        <div className="music-control-container">
-          <button 
-            className="control-button" 
-            onClick={controls.previousTrack} 
-            disabled={!isReady}
-          >
-            <PreviousIcon />
-          </button>
-          
-          <button 
-            className="control-button large" 
-            onClick={controls.togglePlay} 
-            disabled={!isReady}
-          >
-            {isPaused ? <PlayIcon /> : <PauseIcon />}
-          </button>
-          
-          <button 
-            className="control-button" 
-            onClick={controls.nextTrack} 
-            disabled={!isReady}
-          >
-            <NextIcon />
-          </button>
+          <div className="album-container">
+            <img 
+              src={currentAlbumCover} 
+              alt="Current Album Cover" 
+              className="now-playing-cover"
+            />
+            <div className="now-playing-info">
+              <Animate currentSongName={currentSongName}/> 
+              <div className="now-playing-artist">{currentArtistNames}</div>
+              <div className="music-control-container">
+                <button 
+                  className="control-button" 
+                  onClick={controls.previousTrack} 
+                  disabled={!isReady}
+                >
+                  <PreviousIcon />
+                </button>
+                
+                <button 
+                  className="control-button large" 
+                  onClick={controls.togglePlay} 
+                  disabled={!isReady}
+                >
+                  {isPaused ? <PlayIcon /> : <PauseIcon />}
+                </button>
+                
+                <button 
+                  className="control-button" 
+                  onClick={controls.nextTrack} 
+                  disabled={!isReady}
+                >
+                  <NextIcon />
+                </button>
+              </div>
+            </div>
         </div>
       </div>
+      <div className="search-container">
+        <FormControl 
+          placeholder="search for a new jam"
+          type="input"
+          onChange={event =>setSearchInput(event.target.value)}
+          onKeyDown={(e)=> {
+            if (e.key == "Enter") {
+              console.log("enter pressed");
+            }
+          }}
+        />
+        <Button onClick={event=> { console.log("search song")}}>
+          Search
+        </Button>
       </div>
+    </div>
   );
 }
 

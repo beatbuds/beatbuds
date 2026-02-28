@@ -10,14 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.83.0",
+    "@supabase/supabase-js": "^2.87.3",
     "gol": "^0.1.0",
     "ofl": "^1.0.1",
     "ogl": "^1.0.11",
     "react": "^19.1.1",
+    "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.5",
-    "supabase": "^2.58.5"
+    "supabase": "^2.58.5",
+    "three": "^0.183.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

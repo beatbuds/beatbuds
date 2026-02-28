@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { supabase } from './SupabaseClient.js'
+import { supabase } from './supabaseClient.js'
 import Avatar from './Avatar.jsx'
-import '../styling/Account.css'
-import { useNavigate } from 'react-router-dom'
+import '../styling/account.css'
+// import { useNavigate } from 'react-router-dom'
 
 // onProfileLoaded passes the profile data to a callback function
 export default function Account({ session, onProfileLoaded }) {
@@ -93,10 +93,10 @@ export default function Account({ session, onProfileLoaded }) {
         isPrivate: isPrivate, 
         avatar_url: finalAvatarUrl
       }, finalAvatarUrl);
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      // window.scrollTo({
+      //   top: 0,
+      //   behavior: 'smooth'
+      // });
 
     }
   }

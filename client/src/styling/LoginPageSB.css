@@ -1,107 +1,147 @@
 .container {
-  z-index:30;
-  margin-top: 5%;
-  display: flex;
-  flex-wrap: wrap;
-  min-height: fit-content;
-  justify-content: center;
-  gap: 4rem;
-
+  display: grid;
+  grid-template-columns: 1fr auto;
+  font-family: "IBM Plex Mono", monospace;
 }
 
-.left-container,
-.right-container{
-  max-width: 800px;
-  
-  /* outline: 2px solid red; */
-}
-
-/* LEFT SIDE */
 .left-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 0;
+  height: 100vh;
 }
 
-.left-container h1 {
-  font-family: "Cormorant", serif;
-  font-size: 4rem;
-  margin-bottom: 0;
+.left-container .corpo-placement .blur {
+  backdrop-filter: blur(8px);
+  position: absolute; 
+  z-index:-1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 80px;
+  border: 1px solid;
+  box-shadow: inset 0 3.2px 1px;
 }
-.left-container h2 {
-  font-family: "Cormorant", serif;
-  font-style: italic;
-  font-size: 1rem;
+
+.left-container .corpo-placement {
+  display:flex;
+  flex-direction:column;
+  z-index: 2;
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  padding: 45px;
+  text-align: center; 
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.corpo-placement .logo-icon {
+  display: flex;
+  height: 15.2rem;
+  width: auto;
+  margin: 0;
+}
+
+.corpo-placement h1 {
+  font-size: auto;
+}
+
+.corpo-placement h2 {
+  font-size: auto;
 }
 
 .right-container {
-  grid-template-rows: auto auto auto;
   display: flex;
-  flex-direction: column;
-}                     
-.right-container .login-banner img {
-  width: 100%;
-}
-
-.left-container img {
-  height: 150px;
-  flex-grow: 0;
-}
-.right-container .login-welcome > p{
-  font-family: "Cormorant", serif;
-    font-size: 40px;
-    margin: 0;
-}
-
-.right-container .login-page {
-
-  gap:2em;
-}
-
-.login-page {
-  display: flex;
-  flex-direction: row; 
   align-items: center;
 }
 
-.auth-form {
+.right-container .login-page .auth-form {
+  display: inline-block;
+  margin: 50px;
+  width: 100vw;
+}
+
+form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  backdrop-filter: blur(8px);
+  z-index:-1;
+  top: 0;
+  left: 0;
+  border-radius: 60px;
+  border: 1px solid;
+  box-shadow: inset 0 2px .5px;
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem; 
-  max-width: 400px; 
-  width: 100%;
-}
-.auth-form label{
-  margin-top:10px;
-  font-size: 20px;
-}
-.auth-form input {
-  font-family: "Cormorant", serif;
-  font-size: 25px;
-  border-radius: 15px;
-  height: 50px;
+  text-align: center;
+  justify-content: center;
 }
 
-.auth-form button {
-  border-radius: 13px;
-  font-size: 20px
+/* copied from createPost.css */
+
+/* form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--bg-mid);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "IBM Plex Mono", monospace;
+} */
+
+form h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+
 }
 
-.login-banner > div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 600px;
-    overflow: hidden;
-    width: 100%;
-    margin-bottom: 1rem;
-    border-radius: 2rem;
+form input {
+  font-family: "IBM Plex Mono", monospace;
+  width: 90%;
+  margin-top: 1rem;
+  height: 1.5rem;
+border-radius: 15px;
+text-align: center;
+margin-bottom: 1rem;
 }
 
-.login-banner > p{
-    background-color: var(--bg-mid);
-    max-width: 300px;
-    padding: 10px;
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: var(--text-light);
+  font-family: "IBM Plex Mono", monospace;
+  
 }
+
+input[type="text"] {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  border-color: var(--bg-primary);
+  outline: none;
+  
+}
+
+button {
+  width:50%;
+  padding: 0.75rem;
+  background-color: #236F6E;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "IBM Plex Mono", monospace;
+  margin: auto;
+}
+
+button:hover {
+  background-color: #223870;
+} 

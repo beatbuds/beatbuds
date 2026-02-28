@@ -1,66 +1,79 @@
 body {
     margin: 0;
+
 }
 
 .user-container {
-    
-    display: flex;  
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    max-height: 100vh;
 }
 
 .user-container .top-user-container {
     margin-top: 0px;
-    display: flex;  
+    display: flex;
     flex-direction: row;
     align-items: center;
     text-align: center;
+    justify-content: center;
     z-index: 10;
     margin-left: 25px;
     margin-bottom: 90px;
     margin-top: 25px;
+    max-width: 100%;
 }
 
 
 .user-container .top-user-container h1 {
-    font-size: 80px;
+    font-size: auto;
     font-weight: 900;
-    
+
 }
+
 .user-container .top-user-container h2 {
     font-size: 35px;
 }
+
 .user-container .top-user-container img {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    height: 300px;
-    max-width: 300px;
-    overflow: hidden;
-    border-radius: 100%;
+    /* justify-content: center;
+    align-items: center; */
+    /* flex-shrink: 0; */
+    /* max-width: 100%; */
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    /* overflow: hidden; */
+    border-radius: 90px;
     margin-right: 50px;
-    border-style: solid;
-    border-color: black;
-    border-width: 6px;
+    border-style:solid;
+    border-color: rgb(255, 255, 255);
+    border-width: .1rem;
+    border-radius:  50%;
+    /* border-top-left-radius: 10rem;
+    border-bottom-right-radius: 10rem; */
 }
 
 
-/* --- New Outer Container (Positions the entire display) --- */
 .bottom-user-container {
     position: relative;
-    bottom: 5vh; /* Position it above the bottom */
-    width: auto;
+    bottom: 5vh;
+    width: 100%;
     z-index: 20;
     color: var(--text-light);
-    left: 50%;
+    /* left: 50%;
     transform: translateX(-50%);
-    text-align: center; /* Centers the H2 */
-    margin-left: 25px;
+    text-align: center;*/
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .bottom-user-container h2 {
-    font-family: 'Cormorant', serif;
-    font-size: 1.8rem;
+    /* font-family: 'Cormorant', serif; */
+    font-size: auto;
     margin-bottom: 1.5rem;
     color: white;
     text-align: center;
@@ -72,13 +85,15 @@ body {
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    width: auto;
+    max-width: 100%; 
 }
 
 /* --- Tracks Grid: The Horizontal Row --- */
 .tracks-grid {
     display: grid;
-    /* Create 5 equal columns for the 5 tracks */
-    grid-template-columns: repeat(5, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr;
     gap: 20px;
     padding: 0;
     margin: 0;
@@ -88,8 +103,10 @@ body {
 /* --- Individual Track Column: The Vertical Stack --- */
 .track-column {
     display: flex;
-    flex-direction: column; /* Stacks children (details and card) vertically */
-    align-items: center; /* Centers items horizontally within the column */
+    flex-direction: column;
+    /* Stacks children (details and card) vertically */
+    align-items: center;
+    /* Centers items horizontally within the column */
     text-align: left;
     height: 100%;
 }
@@ -103,15 +120,17 @@ body {
 }
 
 .track-rank {
-    font-size: 1.5rem;
+    font-size: auto;
     font-weight: 900;
     color: white;
     line-height: 1;
     margin: 0;
-    display: block; /* Ensure it takes its own line */
+    display: block;
+    /* Ensure it takes its own line */
 }
+
 .track-name {
-    font-size: 1rem;
+    font-size: auto;
     width: 250px;
     font-weight: bold;
     margin: 4px 0 0;
@@ -132,7 +151,9 @@ body {
 /* Album Cover Card */
 .track-card {
     position: relative;
-    width: 100%; /* Fill the column width */
+    width: auto;
+    /* Fill the column width */
+    height: 150px;
     aspect-ratio: 1 / 1;
     border-radius: 8px;
     overflow: hidden;
@@ -140,7 +161,8 @@ body {
     background-position: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
-    flex-shrink: 0; /* Prevents the card from shrinking */
+    flex-shrink: 0;
+    /* Prevents the card from shrinking */
 }
 
 .track-card:hover {
@@ -150,18 +172,20 @@ body {
 /* --- Mobile Responsiveness --- */
 @media (max-width: 950px) {
     .tracks-grid {
-        grid-template-columns: repeat(3, 1fr); 
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 600px) {
     .tracks-grid {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
+
     .track-rank {
         font-size: 1.2rem;
     }
+
     .track-name {
         font-size: 0.9rem;
     }

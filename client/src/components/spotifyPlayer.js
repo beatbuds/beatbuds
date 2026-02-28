@@ -32,7 +32,7 @@ export function useSpotifyPlayer(accessToken) {
     console.log('Initializing Spotify Player...');
 
     const player = new window.Spotify.Player({
-      name: 'BeatBuds Web Player',
+      name: 'BeatBuds Music App',
       getOAuthToken: cb => {
         cb(accessToken);
       },

@@ -1,16 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
 function CallbackPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const effectRan = useRef(false);
 
   useEffect(() => {
+    if (effectRan.current) return;
     const code = searchParams.get('code');
     if (!code) {
       navigate('/'); // Go back home
       return;
     }
+    effectRan.current = true;
 
     // Send the code to our server's /api/token endpoint
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/token`, {
@@ -29,7 +32,7 @@ function CallbackPage() {
         } else {
           // Handle errors from our server
           console.error('Token exchange failed:', data);
-          navigate('/'); 
+          navigate('/');
         }
       })
       .catch(err => {

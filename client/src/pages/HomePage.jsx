@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import Aurora from '../Aurora.jsx';
-import '../styling/PageLayout.css';
-import '../styling/HomePage.css';
+import FloatingLines from '../FloatingLines.jsx';
+import '../styling/page-layout.css';
+import '../styling/homePage.css';
 import { useOutletContext } from "react-router-dom";
 
 const TrackColumn = ({ track, index }) => {
@@ -10,7 +10,7 @@ const TrackColumn = ({ track, index }) => {
     const artists = track.artists.map(artist => artist.name).join(', ');
     
     // Get the album cover URL
-    const coverUrl = track.album.images[0]?.url
+    const coverUrl = track.album.images[0]?.url || 'placeholder.png';
 
     return (
         // This is the container for the entire vertical column (Rank, Name, Card)
@@ -44,7 +44,8 @@ function HomePage() {
       pfp,
       email,
       topTracks,
-      greetingMessage
+      greetingMessage, 
+      emote
   } = useOutletContext();
 
   const navigate = useNavigate(); 
@@ -57,7 +58,7 @@ function HomePage() {
     }
 
     try {
-      const res = await fetch('https://beatbuds.onrender.com/refresh_token', {
+      const res = await fetch('http://127.0.0.1:3000/refresh_token', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ refresh_token: currentRefreshToken })
@@ -91,7 +92,7 @@ function HomePage() {
     <>
       <div className='w-full h-screen relative bg-black flex justify-center items-center'>
         <div style={{ width: '100%', height: '100%', position: "fixed" }}>
-          <Aurora
+          <FloatingLines
             colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
             blend={3.9}
             amplitude={.75}
@@ -103,7 +104,7 @@ function HomePage() {
             {user ? (
               <>
               <img src={pfp} id="ppf-container" alt="Profile"/>
-              <h1>{greetingMessage}, {user}!</h1>
+              <h1>{greetingMessage}, {user}! {emote}</h1>
               </>
             ) : (
               <>
@@ -118,7 +119,7 @@ function HomePage() {
           </div>
           {spotifyLoggedIn && (
           <div className="bottom-user-container">
-            <h2>Your Top 5 Tracks <i>(of all time!)</i></h2> 
+            <h2>-- your top 4 tracks --</h2> 
             <div className="top-tracks-container">
                 <div className="tracks-grid">
                     {topTracks.map((track, index) => (

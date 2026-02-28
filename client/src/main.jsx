@@ -37,9 +37,9 @@ const router = createBrowserRouter([
       { path: "/user/:id", element: <UserPage /> },
       { path: "/HomePage", element: <HomePage /> },
       { path: "/", element: <HomePage /> },
+      { path: "/LoginPage", element: <LoginPage /> },
     ],
   },
-  { path: "/LoginPage", element: <LoginPage /> },
   { path: "/LoginPageSB", element: <LoginPageSB /> },
   { path: "/callback", element: <CallbackPage /> },
 ]);
